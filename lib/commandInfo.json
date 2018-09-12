@@ -1,0 +1,15 @@
+{
+  "player": {
+    "names": [
+      "player",
+      "stats",
+      "playerstats",
+      "playerinfo",
+      "getplayer",
+      "findplayer"
+    ],
+    "argsMax": 1,
+    "argsMin": 1,
+    "usage": "<player name or uuid>"
+  }
+}
