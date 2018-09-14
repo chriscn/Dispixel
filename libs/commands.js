@@ -34,7 +34,9 @@ module.exports = {
         statsEmbed
         .addField('Rank:', `${player.displayRank ? `**[${player.displayRank}]** *(Actually ${player.baseRank})*` : `**[${player.baseRank}]**`}`, true)
         .addField('Level:', player.level, true)
-        .addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0);
+        .addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0)
+        .addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0)
+        .addField('Joined: ', player.firstLogin ? new Date(player.firstLogin).toLocaleString({timeZone: 'UTC', weekday: 'short', month: 'long', year: 'numeric', day: 'numeric'}) : 'Unknown');
         channel.send(statsEmbed).catch(err => console.log(err));
       });
     });

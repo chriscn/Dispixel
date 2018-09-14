@@ -1,5 +1,5 @@
 const config = require('./config.json'),
-commands = require('./lib/commands.js');
+commands = require('./libs/commands.js');
 
 //Discord setup
 const Discord = require('discord.js'),
