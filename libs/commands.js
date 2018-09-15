@@ -4,7 +4,7 @@ util = require('./util.js'),
 Discord = require('discord.js');
 
 module.exports = {
-  listen: client => client.on('message', message => {
+  listen: bot => bot.on('message', message => {
     if (!(new RegExp(`^${config.prefix}[A-Za-z0-9]+(.*)$`).test(message.content))) return;
 
     const args = message.content.replace(config.prefix, '').trim().split(/ +/g),
