@@ -55,5 +55,5 @@ module.exports = {
 
   getPlayerByName: (name, callback) => apiRequest('player', `name=${name}`, 'player', callback),
 
-  getPlayerCount: (callback) => apiRequest('playerCount', callback)
+  getPlayerCount: (callback) => apiRequest('playerCount', null, 'playerCount', callback)
 }
