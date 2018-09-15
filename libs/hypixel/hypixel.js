@@ -1,4 +1,4 @@
-const keys = require('./keys.json'),
+const keys = require('__dirname/keys.json'),
 util = require('../util.js'),
 request = require('request');
 
