@@ -6,5 +6,9 @@ const Discord = require('discord.js'),
 client = new Discord.Client();
 client.login(config.token);
 
+client.on('ready' () => {
+  console.log("Dispixel is ready to rock and roll!");
+});
+
 //Get everything running
 commands.listen(client);
