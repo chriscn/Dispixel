@@ -16,6 +16,7 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "moment": "^2.22.2",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "sexy-require": "^1.1.1"
   }
 }
