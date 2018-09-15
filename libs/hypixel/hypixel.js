@@ -53,5 +53,9 @@ module.exports = {
 
   getPlayerByUUID: (uuid, callback) => apiRequest('player', `uuid=${uuid}`, 'player', callback),
 
-  getPlayerByName: (name, callback) => apiRequest('player', `name=${name}`, 'player', callback)
+  getPlayerByName: (name, callback) => apiRequest('player', `name=${name}`, 'player', callback),
+
+  getOnlinePlayers: callback => apiRequest('playerCount', null, null, callback),
+
+  getWatchdogStats: callback => apiRequest('watchdogstats', null, null, callback)
 }
