@@ -14,7 +14,6 @@ module.exports = {
 
       jimp.read(`https://visage.surgeplay.com/head/256/${player.uuid}`, (err, head) => {
         var saveName = Date.now();
-        console.log(`${player.displayname}'s General Stats`)
         image
         .composite(head, 670, -20)
         .print(titleFont, 10, 10, `${player.displayname}'s General Stats`)

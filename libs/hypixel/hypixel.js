@@ -1,4 +1,4 @@
-const keys = require('__dirname/keys.json'),
+const keys = require('../../keys.json').hypixel_api_keys,
 util = require('../util.js'),
 request = require('request');
 
