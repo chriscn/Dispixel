@@ -29,7 +29,7 @@ module.exports = {
           var statsEmbed = new Discord.RichEmbed()
           .setTitle(`${player.displayname}'s General Stats`)
           .setColor(0x33cc33)
-          .setImage(`attachment://image.png`)
+          //.setImage(`attachment://image.png`)
           .setThumbnail(`https://visage.surgeplay.com/head/${player.uuid}`);
 
           //Stats
@@ -38,8 +38,9 @@ module.exports = {
           .addField('Level:', player.level, true)
           .addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0)
           .addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0)
-          .addField('Joined: ', (player.firstJoined ? util.formatAPITime(player.firstJoined) : `Hasn't Joined`));
-          channel.send({embed: statsEmbed, files: [{attachment: path, name: 'image.png'}]}).catch(err => console.log(err));
+          .addField('Joined: ', (!player.firstJoined ? util.formatAPITime(player.firstJoined) : `Hasn't Joined`));
+
+          channel.send(statsEmbed);
         });
       });
     });
