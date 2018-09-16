@@ -1,5 +1,6 @@
-const token = require('./keys.json').discord_token;
+const token = require('./key.json').discord_token;
 const commands = require('./libs/commands.js');
+const guild = require('./libs/command/guild.js');
 
 //Discord setup
 const Discord = require('discord.js'),
