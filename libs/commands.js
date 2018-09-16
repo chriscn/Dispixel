@@ -1,5 +1,6 @@
 const config = require('../config.json'),
-hypixel = require('./hypixel/hypixel.js')
+hypixel = require('./hypixel/hypixel.js'),
+images = require('./images/images.js'),
 util = require('./util.js'),
 Discord = require('discord.js');
 
@@ -24,20 +25,22 @@ module.exports = {
       if (err) return error(err);
       hypixel.getPlayerByName(args[0], (err, player) => {
         if (err) return error(err);
+        images.playerCard(player, (err, path) => {
+          var statsEmbed = new Discord.RichEmbed()
+          .setTitle(`${player.displayname}'s General Stats`)
+          .setColor(0x33cc33)
+          .setImage(`attachment://image.png`)
+          .setThumbnail(`https://visage.surgeplay.com/head/${player.uuid}`);
 
-        var statsEmbed = new Discord.RichEmbed()
-        .setTitle(`${player.displayname}'s General Stats`)
-        .setColor(0x33cc33)
-        .setThumbnail(`https://visage.surgeplay.com/head/${player.uuid}`);
-
-        //Stats
-        statsEmbed
-        .addField('Rank:', `${player.displayRank ? `**[${player.displayRank}]** *(Actually ${player.baseRank})*` : `**[${player.baseRank}]**`}`, true)
-        .addField('Level:', player.level, true)
-        .addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0)
-        .addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0)
-        .addField('Joined: ', player.firstLogin ? new Date(player.firstLogin).toLocaleString({timeZone: 'UTC', weekday: 'short', month: 'long', year: 'numeric', day: 'numeric'}) : 'Unknown');
-        channel.send(statsEmbed).catch(err => console.log(err));
+          //Stats
+          statsEmbed
+          .addField('Rank:', `${player.displayRank ? `**[${player.displayRank}]** *(Actually ${player.baseRank})*` : `**[${player.baseRank}]**`}`, true)
+          .addField('Level:', player.level, true)
+          .addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0)
+          .addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0)
+          .addField('Joined: ', player.firstLogin ? new Date(player.firstLogin).toLocaleString({timeZone: 'UTC', weekday: 'short', month: 'long', year: 'numeric', day: 'numeric'}) : 'Unknown');
+          channel.send({embed: statsEmbed, files: [{attachment: path, name: 'image.png'}]}).catch(err => console.log(err));
+        });
       });
     });
   })

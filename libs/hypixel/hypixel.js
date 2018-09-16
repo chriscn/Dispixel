@@ -1,4 +1,4 @@
-const keys = require('__dirname/keys.json'),
+const keys = require('../../keys.json').hypixel_api_keys,
 util = require('../util.js'),
 request = require('request');
 
@@ -55,5 +55,5 @@ module.exports = {
 
   getPlayerByName: (name, callback) => apiRequest('player', `name=${name}`, 'player', callback),
 
-  getPlayerCount: (callback) => apiRequest('playerCount', callback)
+  getPlayerCount: (callback) => apiRequest('playerCount', null, 'playerCount', callback)
 }
