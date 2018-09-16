@@ -1,5 +1,5 @@
 const config = require('../config.json'),
-hypixel = require('./hypixel/hypixel.js'),
+hypixel = require('hypixeljs'),
 //images = require('./images/images.js'),
 util = require('./util.js'),
 Discord = require('discord.js');
