@@ -38,7 +38,7 @@ module.exports = {
           .addField('Level:', player.level, true)
           .addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0)
           .addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0)
-          .addField('Joined: ', util.formatAPITime(player.firstJoined) : `Hasn't Joined`);
+          .addField('Joined: ', (player.firstJoined ? util.formatAPITime(player.firstJoined) : `Hasn't Joined`));
           channel.send({embed: statsEmbed, files: [{attachment: path, name: 'image.png'}]}).catch(err => console.log(err));
         });
       });
