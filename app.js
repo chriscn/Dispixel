@@ -8,6 +8,7 @@ bot.login(token);
 
 bot.on('ready', () => {
   console.log("Dispixel is ready to rock and roll!");
+  console.log("Wrote by Dance and Thorin (Chris)")
 });
 
 //Get everything running
