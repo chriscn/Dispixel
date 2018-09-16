@@ -1,4 +1,4 @@
-const keys = require('../../keys.json').hypixel_api_keys;
+const keys = require('../../key.json').hypixel_api_keys;
 const util = require('../util.js');
 const request = require('request');
 
