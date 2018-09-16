@@ -1,12 +1,11 @@
-const keys = require('../../keys.json').hypixel_api_keys,
-util = require('../util.js'),
-request = require('request');
+const keys = require('../../keys.json').hypixel_api_keys;
+const util = require('../util.js');
+const request = require('request');
 
 var currentKey = 0;
-
 function key() {
   currentKey++;
-  if (currentKey == 3) currentKey = 0;
+  if (currentKey == (keys.length - 1)) currentKey = 0;
   return keys[currentKey];
 }
 
