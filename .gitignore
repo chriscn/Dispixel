@@ -5,6 +5,8 @@ key.json
 playground.js
 libs/images/
 
+.idea/
+
 # Logs
 logs
 *.log
