@@ -11,5 +11,13 @@
     "argsMax": 1,
     "argsMin": 1,
     "usage": "<player name>"
+  },
+  "ping": {
+    "names": [
+      "ping"
+    ],
+    "argsMax": 0,
+    "argsMin": 0,
+    "usage": ""
   }
 }
