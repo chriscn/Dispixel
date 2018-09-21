@@ -18,14 +18,9 @@
   "homepage": "https://github.com/Dance-Dog/hypixel-bot#readme",
   "dependencies": {
     "discord.js": "^11.4.2",
-    "hypixeljs": "^1.1.0",
+    "hypixeljs": "^1.2.0",
     "jimp": "^0.2.28",
     "moment": "^2.22.2",
     "request": "^2.88.0"
-  },
-  "devDependencies": {
-    "eslint": "^5.6.0",
-    "eslint-config-google": "^0.10.0",
-    "eslint-plugin-node": "^7.0.1"
   }
 }
