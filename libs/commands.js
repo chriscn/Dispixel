@@ -30,11 +30,15 @@ function listen(bot) {
     //Fetches a player's stats
     util.isCommand(cmd, args, 'player', (err) => {
       if (err) return error(err);
-      hypixel.getPlayerByName(args[0], (err, player) => {
+      if (args[0].length > 16) return hypixel.getPlayer.byUuid(args[0], (err, player) => {
         if (err) return error(err);
-        sendPlayerEmbed();
+        sendPlayerEmbed(player);
       });
-      function sendPlayerEmbed() {
+      hypixel.getPlayer.byName(args[0], (err, player) => {
+        if (err) return error(err);
+        sendPlayerEmbed(player);
+      });
+      function sendPlayerEmbed(player) {
         const playerEmbed = new Discord.RichEmbed()
         .setTitle(player.displayname + '\'s Statistics')
         .setThumbnail('https://visage.surgeplay.com/face/' + player.uuid)
