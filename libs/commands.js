@@ -81,7 +81,7 @@ function listen(bot) {
     });
 
     //OP Commands
-    if (['302930603932778506', '140843771075100672'].indexOf(author.id)+1) {
+    if (['302930603932778506', '140843771075100672'].indexOf(author.id)+1) { // Dance's and Thorin's IDs I think
       if (cmd == 'requests') channel.send(`${hypixel.recentRequests()} requests made in the last minute. ${(keys.length*120)-hypixel.recentRequests()} remaining!`);
     }
   });
