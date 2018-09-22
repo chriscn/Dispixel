@@ -1,4 +1,13 @@
 {
+  "ping": {
+    "names": [
+      "ping"
+    ],
+    "argsMax": 0,
+    "argsMin": 0,
+    "usage": ""
+  },
+
   "player": {
     "names": [
       "player",
@@ -12,12 +21,18 @@
     "argsMin": 1,
     "usage": "<player name>"
   },
-  "ping": {
+
+  "guild": {
     "names": [
-      "ping"
+      "guild",
+      "guildstats",
+      "guildinfo",
+      "getguild",
+      "findguild",
+      "fetchguild"
     ],
-    "argsMax": 0,
-    "argsMin": 0,
-    "usage": ""
+    "argsMax": 1,
+    "argsMin": 1,
+    "usage": "<guild name>"
   }
 }
