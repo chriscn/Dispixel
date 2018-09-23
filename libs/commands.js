@@ -48,7 +48,7 @@ function listen(bot) {
         .addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0, true)
         .addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0, true)
         .addField('Joined:', ! player.firstJoined ? util.formatAPITime(player.firstJoined) : `Hasn't Joined`, true);
-        channel.send(guildEmbed);
+        channel.send(playerEmbed);
       }
     });
 
@@ -73,7 +73,7 @@ function listen(bot) {
           .addField('Type:', ban.type == 0 ? 'Permenant' : 'Temporary', true);
           if (ban.tags.length > 0) banEmbed.addField('Tags:', `[${ban.tags.join('], [')}]`)
           banEmbed.addField('Since:', util.punishmentDate(ban.date), true)
-          if (ban.type == 1) banEmbed.addField('Expires In:', util.punishmentExpiration(ban.duration))
+          if (ban.type == 1) banEmbed.addField('Expires In:', util.punishmentExpiration(ban.date, ban.duration))
           banMessage.edit(banEmbed);
         });
       }
