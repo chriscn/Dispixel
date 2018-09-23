@@ -6,7 +6,7 @@ const Discord = require('discord.js');
 
 function listen(bot) {
   bot.on('message', (message) => {
-    if (!(new RegExp(`^${config.prefix}[A-Za-z0-9]+(.*)$`).test(message.content))) return;
+    if (!(new RegExp(`^${config.prefix}[A-Za-z0-9]+(.*)$`).test(message.content)) || message.author.bot) return;
 
     const args = message.content.replace(config.prefix, '').trim().split(/ +/g),
     cmd = args.shift().toLowerCase();
