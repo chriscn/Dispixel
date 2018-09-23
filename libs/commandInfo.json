@@ -34,5 +34,20 @@
     "argsMax": 1,
     "argsMin": 1,
     "usage": "<guild name>"
+  },
+
+  "ban": {
+    "names": [
+      "ban",
+      "getban",
+      "findban",
+      "banstats",
+      "fetchban",
+      "checkban",
+      "myban"
+    ],
+    "argsMax": 2,
+    "argsMin": 2,
+    "usage": "<player name> <ban ID>"
   }
 }

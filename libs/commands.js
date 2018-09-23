@@ -47,8 +47,35 @@ function listen(bot) {
         .addField('Level:', util.networkLevel(player.networkExp), true)
         .addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0, true)
         .addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0, true)
-        .addField('Last Login:', ! player.firstJoined ? util.formatAPITime(player.firstJoined) : `Hasn't Joined`, true);
-        message.channel.send(playerEmbed);
+        .addField('Joined:', ! player.firstJoined ? util.formatAPITime(player.firstJoined) : `Hasn't Joined`, true);
+        channel.send(guildEmbed);
+      }
+    });
+
+    //Fetches a user's ban
+    util.isCommand(cmd, args, 'ban', (err) => {
+      if (channel.type != 'dm') return error('To keep users safe, this command is only available in one-on-one DMs.');
+      if (err) return error(err);
+      const player = args[0],
+      banId = args[1];
+      channel.send(util.statsEmbed('Please wait!', 'We are currently fetching other peoples\' bans. This could take a minute...', [], '')).then(banMessage => {
+        setTimeout(() => sendBanEmbed(banMessage), 1500);
+      });
+      function sendBanEmbed(banMessage) {
+        util.fetchBan(player, banId, (err, ban) => {
+          if (err) return banMessage.edit(util.errorEmbed(err));
+          const banEmbed = new Discord.RichEmbed()
+          .setTitle(`Ban Information`)
+          .setThumbnail('https://hypixel.net/styles/hypixel-uix/hypixel/watchdog.png')
+          .addField('Player UUID:', ban.uuid)
+          .addField('Ban ID:', `**${ban.id.toUpperCase().slice(-8)}** *(${ban.id})*`)
+          .addField('Reason:', `${ban.reason}${ban.subType ? ` (${ban.subType})` : ''}`)
+          .addField('Type:', ban.type == 0 ? 'Permenant' : 'Temporary', true);
+          if (ban.tags.length > 0) banEmbed.addField('Tags:', `[${ban.tags.join('], [')}]`)
+          banEmbed.addField('Since:', util.punishmentDate(ban.date), true)
+          if (ban.type == 1) banEmbed.addField('Expires In:', util.punishmentExpiration(ban.duration))
+          banMessage.edit(banEmbed);
+        });
       }
     });
 
