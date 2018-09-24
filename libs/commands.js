@@ -19,7 +19,8 @@ function listen(bot) {
     function error(err) {
       channel.send(util.errorEmbed(err)).catch((err) => console.log(err));
     }
-    console.log(`[COMMAND] \'-${cmd} ${args.join(' ')}\' was recieved from \'${author.username}\' in channel \'${channel.id}\'`);
+    //console.log(`[COMMAND] \'-${cmd} ${args.join(' ')}\' was recieved from \'${author.username}\' in channel \'${channel.id}\'`);
+    bot.channels.get(493105661324951552).send(`Logging test.`);
 
     //Commands, what fun
 
