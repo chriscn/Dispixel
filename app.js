@@ -14,5 +14,9 @@ hypixel.login(access.hypixel_api_keys);
 
 bot.on('ready', () => console.log(`Dispixel is ready to rock and roll! Started at ${moment().format()}`));
 
+bot.on('message', (message) => {
+  message.channels.get(config.logging_channel).send(`[COMMAND] \'-${cmd} ${args.join(' ')}\' was recieved from \'${author.username}\' in channel \'${channel.id}\'`);
+});
+
 //Listen for commands
 commands.listen(bot);
