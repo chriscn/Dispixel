@@ -14,6 +14,12 @@ hypixel.login(access.hypixel_api_keys);
 
 bot.on('ready', () => console.log(`Dispixel is ready to rock and roll! Started at ${moment().format()}`));
 
+bot.on('message', (message) => {
+  const args = message.content.replace(config.prefix, '').trim().split(/ +/g);
+  const cmd = args.shift();
+  /*message.channel.get(config.logging_channel).send*/console.log(`[COMMAND REQUEST] by ${message.username} requesting ${cmd} with arguments ${args}`);
+});
+
 /*bot.on('message', (message) => {
   const args = message.content.replace(config.prefix, '').trim().split(/ +/g);
   const cmd = args.shift().toLowerCase()
