@@ -23,7 +23,7 @@ bot.on('message', (message) => {
 	const args = message.content.replace(config.prefix, '').split(/ +/g); // splits the message with each space
 	const cmd = args.shift();
 	const user = message.member.user.id;
-	console.log(`[COMMAND REQUEST] by ${user} (${message.author.username}) requesting ${cmd} with arguments: ${args} from ${message.guildID == null ? 'Direct Messages' : message.guildID}`);
+	console.log(`[COMMAND REQUEST] by ${user} (${message.author.username}) requesting ${cmd} with arguments: ${args} from guild ${message.guild.id}`);
 });
 
 // Listen for command
