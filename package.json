@@ -10,7 +10,7 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "author": "Dance-Dog",
+  "author": "Thorin",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/chriscn/hypixel-bot/issues"
