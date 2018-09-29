@@ -1,16 +1,16 @@
-const access = require(__dirname +'/key.json');
-const commands = require(__dirname + '/libs/commands.js');
-const config = require(__dirname + '/config.json');
+const access = require('./key.json');
+const commands = require('./lib/commands.js');
+const config = require('./config.json');
 const moment = require('moment');
-const cmd_other = require('./libs/commands/other.js');
+const cmd_other = require('./lib/commands/other.js');
+const Discord = require('discord.js');
+const hypixel = require('hypixeljs');
 
 // Discord setup
-const Discord = require('discord.js'),
-	bot = new Discord.Client();
+bot = new Discord.Client();
 bot.login(access.discord_token);
 
 // Hypixel API setup
-const hypixel = require('hypixeljs');
 hypixel.login(access.hypixel_api_keys);
 
 bot.on('ready', () => console.log(`Dispixel is ready to rock and roll! Started at ${moment().format()}`));
