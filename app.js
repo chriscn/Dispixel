@@ -1,5 +1,4 @@
 const access = require('./key.json');
-const commands = require('./lib/commands.js');
 const config = require('./config.json');
 const moment = require('moment');
 const Discord = require('discord.js');
@@ -27,6 +26,6 @@ bot.on('message', (message) => {
 });
 
 // Listen for command
-commands.listen(bot);
 cmd_other.listen(bot);
-
+cmd_guild.listen(bot);
+cmd_player.listen(bot);
