@@ -11,11 +11,11 @@ function listen(bot) {
 		const args = message.content.replace(config.prefix, '').trim().split(/ +/g),
 			cmd = args.shift().toLowerCase();
 
-		const channel = message.channel,
-			content = message.cleanContent,
-			author = message.author,
-			member = message.member,
-			guild = message.guild;
+		const channel = message.channel;
+		const content = message.cleanContent;
+		const author = message.author;
+		const member = message.member;
+		const guild = message.guild;
 		function error(err) {
 			channel.send(util.errorEmbed(err)).catch((err) => console.log(err));
 		}
