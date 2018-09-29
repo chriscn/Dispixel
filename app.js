@@ -5,7 +5,7 @@ const moment = require('moment');
 
 // Discord setup
 const Discord = require('discord.js'),
-bot = new Discord.Client();
+	bot = new Discord.Client();
 bot.login(access.discord_token);
 
 // Hypixel API setup
@@ -16,11 +16,11 @@ bot.on('ready', () => console.log(`Dispixel is ready to rock and roll! Started a
 
 // Logging Feature of all our commands.
 bot.on('message', (message) => {
-  if (!message.content.startsWith(config.prefix) || message.author.bot) return;
-  const args = message.content.replace(config.prefix, '').split(/ +/g); // splits the message with each space
-  const cmd = args.shift();
-  const user = message.member.user.id;
-  console.log(`[COMMAND REQUEST] by ${user} (${message.author.username}) requesting ${cmd} with arguments: ${args} from ${message.guildID == null ? 'Direct Messages' : message.guildID}`);
+	if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+	const args = message.content.replace(config.prefix, '').split(/ +/g); // splits the message with each space
+	const cmd = args.shift();
+	const user = message.member.user.id;
+	console.log(`[COMMAND REQUEST] by ${user} (${message.author.username}) requesting ${cmd} with arguments: ${args} from ${message.guildID == null ? 'Direct Messages' : message.guildID}`);
 });
 
 //Listen for commands
