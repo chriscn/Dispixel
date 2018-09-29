@@ -9,11 +9,10 @@ const hypixel = require('hypixeljs');
 // Discord setup
 const bot = new Discord.Client();
 bot.login(access.discord_token);
+bot.on('ready', () => console.log(`Dispixel is ready to rock and roll! Started at ${moment().format()}`));
 
 // Hypixel API setup
 hypixel.login(access.hypixel_api_keys);
-
-bot.on('ready', () => console.log(`Dispixel is ready to rock and roll! Started at ${moment().format()}`));
 
 // Logging Feature of all our commands.
 bot.on('message', (message) => {
@@ -24,7 +23,7 @@ bot.on('message', (message) => {
 	console.log(`[COMMAND REQUEST] by ${user} (${message.author.username}) requesting ${cmd} with arguments: ${args} from ${message.guildID == null ? 'Direct Messages' : message.guildID}`);
 });
 
-//Listen for commands
+// Listen for commands
 commands.listen(bot);
 cmd_other.listen(bot);
 
