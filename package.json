@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dance-Dog/hypixel-bot.git"
+    "url": "git+https://github.com/chriscn/hypixel-bot.git"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -13,9 +13,9 @@
   "author": "Dance-Dog",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Dance-Dog/hypixel-bot/issues"
+    "url": "https://github.com/chriscn/hypixel-bot/issues"
   },
-  "homepage": "https://github.com/Dance-Dog/hypixel-bot#readme",
+  "homepage": "https://github.com/chriscn/hypixel-bot#readme",
   "dependencies": {
     "discord.js": "^11.4.2",
     "hypixeljs": "^1.2.1",
