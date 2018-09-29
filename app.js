@@ -2,6 +2,7 @@ const access = require(__dirname +'/key.json');
 const commands = require(__dirname + '/libs/commands.js');
 const config = require(__dirname + '/config.json');
 const moment = require('moment');
+const cmd_other = require('./libs/commands/other.js');
 
 // Discord setup
 const Discord = require('discord.js'),
@@ -25,4 +26,5 @@ bot.on('message', (message) => {
 
 //Listen for commands
 commands.listen(bot);
+cmd_other.listen(bot);
 
