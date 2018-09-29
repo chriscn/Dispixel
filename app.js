@@ -7,7 +7,7 @@ const Discord = require('discord.js');
 const hypixel = require('hypixeljs');
 
 // Discord setup
-bot = new Discord.Client();
+const bot = new Discord.Client();
 bot.login(access.discord_token);
 
 // Hypixel API setup
