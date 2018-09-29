@@ -2,7 +2,7 @@
   "name": "hypixel-bot",
   "version": "1.0.0",
   "description": "A Discord bot for everything Hypixel!",
-  "main": "index.js",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chriscn/hypixel-bot.git"
