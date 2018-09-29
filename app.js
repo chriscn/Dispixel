@@ -3,6 +3,7 @@ const config = require('./config.json');
 const moment = require('moment');
 const Discord = require('discord.js');
 const hypixel = require('hypixeljs');
+const util = require('./lib/util');
 
 const cmd_other = require('./lib/command/other.js');
 const cmd_guild = require('./lib/command/guild.js');
@@ -26,6 +27,6 @@ bot.on('message', (message) => {
 });
 
 // Listen for command
-cmd_other.listen(bot);
-cmd_guild.listen(bot);
-cmd_player.listen(bot);
+cmd_other.listen(bot, config.prefix, util);
+cmd_guild.listen(bot, config.prefix, util);
+cmd_player.listen(bot, config.prefix, util);
