@@ -28,5 +28,5 @@ bot.on('message', (message) => {
 
 // Listen for command
 cmd_other.listen(bot, config.prefix, util, hypixel);
-cmd_guild.listen(bot, config.prefix, util, hypixel);
+//cmd_guild.listen(bot, config.prefix, util, hypixel);
 cmd_player.listen(bot, config.prefix, util, hypixel);
