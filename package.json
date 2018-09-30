@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/chriscn/hypixel-bot.git"
   },
+  "scripts": {
+  	"test": "echo \"Error: no test specified\" && exit 0"
+  }
   "engines": {
     "node": ">=8.0.0"
   },
