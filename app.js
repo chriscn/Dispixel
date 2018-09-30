@@ -9,6 +9,8 @@ const cmd_other = require('./lib/command/other.js');
 const cmd_guild = require('./lib/command/guild.js');
 const cmd_player = require('./lib/command/player.js');
 
+const cmdInfo = require('./lib/commandInfo');
+const cmdArray = [cmdInfo.guild, cmdInfo.player, cmdInfo.ban, cmdInfo.player];
 // Discord setup
 const bot = new Discord.Client();
 bot.login(access.discord_token);
@@ -22,7 +24,9 @@ bot.on('message', (message) => {
 	if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 	const args = message.content.replace(config.prefix, '').split(/ +/g); // splits the message with each space
 	const cmd = args.shift();
-	console.log(`[COMMAND REQUEST] by ${message.author.user.id} (${message.author.username}) requesting ${cmd} with arguments: ${args} from guild ${message.guild.id}`);
+	if (cmdArray.indexOf(cmd) > -1) {
+		console.log(`[COMMAND REQUEST] by ${message.author.id} (${message.author.username}) requesting ${cmd} with arguments: ${args} from guild ${message.guild.id}`);
+	}
 });
 
 // Listen for command
