@@ -26,6 +26,8 @@ bot.on('message', (message) => {
 	const cmd = args.shift();
 	if (cmdArray.indexOf(cmd) > -1) {
 		console.log(`[COMMAND REQUEST] by ${message.author.id} (${message.author.username}) requesting ${cmd} with arguments: ${args} from guild ${message.guild.id}`);
+	} else {
+		message.channel.send(`Dispixel doesn't recognise that command, ${message.author}`);
 	}
 });
 
