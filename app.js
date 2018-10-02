@@ -28,5 +28,5 @@ bot.on('message', (message) => {
 
 // Listen for command
 other.listen(bot, config.prefix, util);
-guild.listen(bot, config.prefix, util, hypixel);
+//guild.listen(bot, config.prefix, util, hypixel);
 player.listen(bot, config.prefix, util, hypixel);
