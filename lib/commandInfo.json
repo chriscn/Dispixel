@@ -7,6 +7,14 @@
     "argsMin": 0,
     "usage": ""
   },
+  "requests": {
+    "names": [
+      "requests"
+    ],
+    "argsMax": 0,
+    "argsMin": 0,
+    "usage": ""
+  },
 
   "player": {
     "names": [
