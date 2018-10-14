@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const hypixeljs = require('hypixeljs');
+const moment = require('moment');
 const { prefix, icons } = require('./config.json');
 const { discord_token, hypixel_api_keys } = require('./key.json');
 
@@ -17,7 +18,7 @@ for (const file of commandFiles) {
 const cooldowns = new Discord.Collection();
 
 bot.on('ready', () => {
-	console.log('Ready!');
+	console.log(`Dispixel started at ${moment()}`);
 });
 
 bot.on('message', message => {
