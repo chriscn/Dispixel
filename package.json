@@ -1,6 +1,6 @@
 {
-  "name": "hypixel-bot",
-  "version": "1.1.0",
+  "name": "Dispixel",
+  "version": "1.2.0",
   "description": "A Discord bot for everything Hypixel!",
   "main": "app.js",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git+https://github.com/chriscn/hypixel-bot.git"
   },
   "scripts": {
-  	"test": "echo \"Error: no test specified\" && exit 0"
+    "test": "./node_modules/.bin/eslint --fix --ignore-path .gitignore ."
   },
   "engines": {
     "node": ">=8.0.0"
