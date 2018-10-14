@@ -1,7 +1,8 @@
 const fs = require('fs');
 const Discord = require('discord.js');
+const hypixeljs = require('hypixeljs');
 const { prefix, icons } = require('./config.json');
-const { discord_token } = require('./key.json');
+const { discord_token, hypixel_api_keys } = require('./key.json');
 
 const bot = new Discord.Client();
 bot.command = new Discord.Collection();
@@ -81,3 +82,4 @@ bot.on('message', message => {
 });
 
 bot.login(discord_token);
+hypixeljs.login(hypixel_api_keys);
