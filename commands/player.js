@@ -7,7 +7,6 @@ function sendPlayerEmbed(player) {
 		.addField('Karma:', player.karma ? player.karma : 0, true);
 }
 
-
 module.exports = {
 	name: 'player',
 	description: 'Get detailed information about a player using the Hypixel API',
