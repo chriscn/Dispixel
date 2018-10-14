@@ -4,13 +4,13 @@ const { prefix, icons } = require('./config.json');
 const { discord_token } = require('./key.json');
 
 const bot = new Discord.Client();
-bot.commands = new Discord.Collection();
+bot.command = new Discord.Collection();
 
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./command').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	bot.commands.set(command.name, command);
+	const command = require(`./command/${file}`);
+	bot.command.set(command.name, command);
 }
 
 const cooldowns = new Discord.Collection();
@@ -25,8 +25,8 @@ bot.on('message', message => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
-	const command = bot.commands.get(commandName)
-		|| bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+	const command = bot.command.get(commandName)
+		|| bot.command.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 	if (!command) return;
 
