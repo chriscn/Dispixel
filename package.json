@@ -1,5 +1,5 @@
 {
-  "name": "hypixel-bot",
+  "name": "Dispixel",
   "version": "1.1.0",
   "description": "A Discord bot for everything Hypixel!",
   "main": "app.js",

@@ -1,32 +1,85 @@
-const access = require('./key.json');
-const config = require('./config.json');
-const moment = require('moment');
+const fs = require('fs');
 const Discord = require('discord.js');
-const hypixel = require('hypixeljs');
-const util = require('./lib/util');
+const hypixeljs = require('hypixeljs');
+const moment = require('moment');
+const { prefix, icons } = require('./config.json');
+const { discord_token, hypixel_api_keys } = require('./key.json');
 
-const other = require('./lib/command/other.js');
-const guild = require('./lib/command/guild.js');
-const player = require('./lib/command/player.js');
-
-// Discord setup
 const bot = new Discord.Client();
-bot.login(access.discord_token);
-bot.on('ready', () => console.log(`Dispixel is ready to rock and roll! Started at ${moment().format()}`));
+bot.commands = new Discord.Collection();
 
-// Hypixel API setup
-hypixel.login(access.hypixel_api_keys);
+const commandsFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-// Logging Feature of all our command.
-bot.on('message', (message) => {
-	if (!message.content.startsWith(config.prefix) || message.author.bot) return;
-	const args = message.content.replace(config.prefix, '').split(/ +/g); // splits the message with each space
-	const cmd = args.shift();
+for (const file of commandsFiles) {
+	const commands = require(`./commands/${file}`);
+	bot.commands.set(commands.name, commands);
+}
 
-	console.log(`[COMMAND REQUEST] by ${message.author.id} (${message.author.username}) requesting ${cmd} with arguments: ${args} from guild ${message.guild.id}`);
+const cooldowns = new Discord.Collection();
+
+bot.on('ready', () => {
+	console.log(`Dispixel started at ${moment()}`);
 });
 
-// Listen for command
-other.listen(bot, config.prefix, util);
-//guild.listen(bot, config.prefix, util, hypixel);
-player.listen(bot, config.prefix, util, hypixel);
+bot.on('message', message => {
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+	const args = message.content.slice(prefix.length).split(/ +/);
+	const commandsName = args.shift().toLowerCase();
+
+	const commands = bot.commands.get(commandsName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandsName));
+
+	if (!commands) return;
+
+	if (commands.guildOnly && message.channel.type !== 'text') {
+		return message.reply('I can\'t execute that commands inside DMs!');
+	}
+
+	if (commands.args && !args.length) {
+		let reply = `You didn't provide any arguments, ${message.author}!`;
+
+		if (commands.usage) {
+			reply += `\nThe proper usage would be: \`${prefix}${commands.name} ${commands.usage}\``;
+		}
+
+		return message.channel.send(reply);
+	}
+
+	if (!cooldowns.has(commands.name)) {
+		cooldowns.set(commands.name, new Discord.Collection());
+	}
+
+	const now = Date.now();
+	const timestamps = cooldowns.get(commands.name);
+	const cooldownAmount = (commands.cooldown || 3) * 1000;
+
+	if (!timestamps.has(message.author.id)) {
+		timestamps.set(message.author.id, now);
+		setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+	} else {
+		const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+		if (now < expirationTime) {
+			const timeLeft = (expirationTime - now) / 1000;
+			return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${commands.name}\` commands.`);
+		}
+
+		timestamps.set(message.author.id, now);
+		setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+	}
+
+	try {
+		commands.execute(message, args);
+	} catch (error) {
+		message.reply(new Discord.RichEmbed()
+			.setTitle('An Error Occurred!')
+			.setColor('#e84118')
+			.setThumbnail(icons.warning)
+			.addField('For debugging purposes:', error.toString().split('\n')[0])
+		);
+		console.error(error);
+	}
+});
+
+bot.login(discord_token);
+hypixeljs.login(hypixel_api_keys);
