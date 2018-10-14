@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix icons } = require('./config.json');
+const { prefix, icons } = require('./config.json');
 const { discord_token } = require('./key.json');
 
 const bot = new Discord.Client();
@@ -76,7 +76,7 @@ bot.on('message', message => {
 			.setColor('#e84118')
 			.setThumbnail(icons.warning)
 			.addField('For debugging purposes:', error.toString().split('\n')[0])
-		)
+		);
 	}
 });
 
