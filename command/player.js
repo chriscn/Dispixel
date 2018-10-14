@@ -19,13 +19,13 @@ module.exports = {
 				if (err) console.error(err);
 				message.channel.send(sendPlayerEmbed(json));
 			});
-		} else if (args[0].match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/)) {
+		} else if (args[0].match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/) || args[0].match(/[0-9a-f]{32}/)) { // tests against a full uuid or a trimmed uuid
 			hypixeljs.getPlayer.byUuid(args[0], (err, json) => {
 				if (err) console.error(err);
 				message.channel.send(sendPlayerEmbed(json));
 			});
 		} else {
-			message.reply(`the player name provided ${args[0]} was not valid as it was more than sixteen characters.`);
+			message.reply(`the player name provided ${args[0]} was not valid as it was more than sixteen characters and wasn't in a UUID format. We do support UUIDs!`);
 		}
 	},
 };
