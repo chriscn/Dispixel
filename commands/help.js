@@ -2,9 +2,9 @@ const { prefix } = require('../config.json');
 
 module.exports = {
 	name: 'help',
-	description: 'List all of my commands or info about a specific command.',
+	description: 'List all of my commands or info about a specific commands.',
 	aliases: ['commands'],
-	usage: '[command name]',
+	usage: '[commands name]',
 	cooldown: 5,
 	execute(message, args) {
 		const data = [];
@@ -12,7 +12,7 @@ module.exports = {
 
 		if (!args.length) {
 			data.push('Here\'s a list of all my commands:');
-			data.push(command.map(command => command.name).join(', '));
+			data.push(commands.map(command => command.name).join(', '));
 			data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
 
 			return message.author.send(data, { split: true })
