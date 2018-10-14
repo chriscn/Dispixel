@@ -1,10 +1,16 @@
 const hypixeljs = require('hypixeljs');
 const Discord = require('discord.js');
+const util = require('../methods');
 
 function sendPlayerEmbed(player) {
 	return new Discord.RichEmbed()
-		.setTitle(`${player.displayname}'s Stats`)
-		.addField('Karma:', player.karma ? player.karma : 0, true);
+		.setTitle(`${player.displayname} **(Currently ${util.isOnline(player.lastLogin, player.lastLogout)})**`)
+		.setThumbnail('https://visage.surgeplay.com/face/' + player.uuid)
+		.addField('Rank:', util.getRank(player), true)
+		.addField('Level:', util.networkLevel(player.networkExp), true)
+		.addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0, true)
+		.addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0, true)
+		.addField('Joined:', !player.firstJoined ? util.formatAPITime(player.firstJoined) : 'Hasn\'t Joined', true);
 }
 
 module.exports = {
