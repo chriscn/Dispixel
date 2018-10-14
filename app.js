@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix } = require('./config.json');
+const { prefix icons } = require('./config.json');
 const { discord_token } = require('./key.json');
 
 const bot = new Discord.Client();
@@ -71,7 +71,12 @@ bot.on('message', message => {
 		command.execute(message, args);
 	} catch (error) {
 		console.error(error);
-		message.reply('there was an error trying to execute that command!');
+		message.reply(new Discord.RichEmbed()
+			.setTitle('An Error Occurred!')
+			.setColor('#e84118')
+			.setThumbnail(icons.warning)
+			.addField('For debugging purposes:', error.toString().split('\n')[0])
+		)
 	}
 });
 
