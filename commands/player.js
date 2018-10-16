@@ -10,7 +10,7 @@ function sendPlayerEmbed(player) {
 		.addField('Level:', util.networkLevel(player.networkExp), true)
 		.addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0, true)
 		.addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0, true)
-		.addField('Joined:', !player.firstJoined ? util.formatAPITime(player.firstJoined) : 'Hasn\'t Joined', true);
+		.addField('Joined:', !player.firstLogin ? util.formatAPITime(player.firstLogin) : 'Hasn\'t Joined', true);
 }
 
 module.exports = {
