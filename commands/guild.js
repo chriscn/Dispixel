@@ -24,15 +24,15 @@ module.exports = {
 			hypixeljs.getGuild.byId(args[0], (err, guild) => {
 				if (err) console.error(err);
 				if (guild == null) message.reply('that guild doesn\'t exist. Perhaps you should create it?');
-				guild.members.forEach(member => {
-					if (['GUILDMASTER', 'Guild Master'].indexOf(member.rank) > -1) {
-						hypixeljs.getPlayer.byUuid(member.uuid, (err, player) => {
-							if (err) console.error(err);
+				for (let i = 0; i < guild.members.length; i++) {
+					if (['GUILDMASTER', 'Guild Master'].indexOf(guild.members[i].rank) + 1) {
+						hypixeljs.getPlayer.byUuid(guild.members[i].uuid, (err, player) => {
+							if (err) return console.error(err);
 							guild.master = player.displayname;
 							message.channel.send(getGuildEmbed(guild));
 						});
 					}
-				});
+				}
 			});
 		} else {
 			hypixeljs.getGuild.byName(args.join(' '), (err, guild) => {
