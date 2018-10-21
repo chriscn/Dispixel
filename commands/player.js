@@ -19,7 +19,6 @@ module.exports = {
 	args: true,
 	cooldown: 10,
 	execute(message, args) {
-
 		if (args[0].length <= 16) {
 			hypixeljs.getPlayer.byName(args[0], (err, json) => {
 				if (err) console.error(err);
