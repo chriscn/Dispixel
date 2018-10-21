@@ -10,7 +10,7 @@ function sendPlayerEmbed(player) {
 		.addField('Level:', util.networkLevel(player.networkExp), true)
 		.addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0, true)
 		.addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0, true)
-		.addField('Joined:', !player.firstLogin ? util.formatAPITime(player.firstLogin) : 'Hasn\'t Joined', true);
+		.addField('Joined:', !player.firstlogin ? util.formatAPITime(player.firstlogin) : 'Hasn\'t Joined', true);
 }
 
 module.exports = {
@@ -19,6 +19,7 @@ module.exports = {
 	args: true,
 	cooldown: 10,
 	execute(message, args) {
+
 		if (args[0].length <= 16) {
 			hypixeljs.getPlayer.byName(args[0], (err, json) => {
 				if (err) console.error(err);
