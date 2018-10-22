@@ -13,6 +13,7 @@ function sendGuildEmbed(message, guild) {
 					message.channel.send(new Discord.RichEmbed()
 						.setTitle(`${guild.name}`)
 						.setURL(`https://hypixel.net/guilds/${guild._id}`)
+						.color('#2196F3')
 						.setThumbnail(guild.banner ? `https://hypixel.net/data/guild_banners/100x200/${guild._id}.png` : 'https://hypixel.net/styles/hypixel-uix/hypixel/default-guild-banner.png')
 						.addField('Guild Master:', guild.master, true)
 						.addField('Members:', guild.members.length, true)
