@@ -24,7 +24,7 @@ module.exports = {
 							playerHistory.addField('First Name Registered', namehistory[i].name);
 						} else {
 							// all other names.
-							playerHistory.addField(`Changed on ${moment(namehistory[i].changedToAT).format('Do MMMM YYYY')}`, namehistory[i].name);
+							playerHistory.addField(`Changed on ${moment(parseInt(namehistory[i].changedToAt)).format('Do MMMM YYYY')}`, namehistory[i].name);
 						}
 					}
 					message.channel.send(playerHistory);
