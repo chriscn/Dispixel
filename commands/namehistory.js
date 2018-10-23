@@ -1,6 +1,6 @@
 const mojangjs = require('mojangjs');
 const Discord = require('discord.js');
-const methods = require('../methods.js');
+const moment = require('moment');
 
 module.exports = {
 	name: 'namehistory',
@@ -24,7 +24,7 @@ module.exports = {
 							playerHistory.addField('First Name Registered', namehistory[i].name);
 						} else {
 							// all other names.
-							playerHistory.addField(`Changed at ${methods.formatAPITime(namehistory[i].changedToAt)}`, namehistory[i].name);
+							playerHistory.addField(`Changed on ${moment(namehistory[i].changedToAT).format('Do MMMM YYYY')}`, namehistory[i].name);
 						}
 					}
 					message.channel.send(playerHistory);
