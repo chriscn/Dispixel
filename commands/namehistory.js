@@ -47,7 +47,7 @@ module.exports = {
 								allNames += ', ';
 							}
 						}
-						playerHistory.addField(`${args[0]} has too many names, at ${namehistory.length} which is more than RichEmbeds can handle. So it has been truncated.`, `All of **${args[0]}'s** names are ${allNames}`);
+						playerHistory.addField(`${args[0]} has too many names, at ${namehistory.length} which is more than RichEmbeds can handle. So it has been truncated.`, `All of **${args[0]}'s** names are: ${allNames}`);
 					}
 					message.channel.send(playerHistory);
 				});
