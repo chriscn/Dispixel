@@ -18,7 +18,18 @@ module.exports = {
 						.setThumbnail('https://visage.surgeplay.com/face/' + uuid)
 						.setColor('#8c7ae6');
 
-					for (let i = 0; i < namehistory.length; i++) {
+					let namehistory_length;
+					let namehistory_changed;
+
+					if (namehistory.length > 20) {
+						namehistory_length = 20;
+						namehistory_changed = true;
+					} else {
+						namehistory_length = namehistory.length;
+						namehistory_changed = false;
+					}
+
+					for (let i = 0; i < namehistory_length; i++) {
 						if (namehistory[i].changedToAt === undefined) {
 							// the first name registered.
 							playerHistory.addField('First Name Registered', namehistory[i].name);
@@ -26,6 +37,17 @@ module.exports = {
 							// all other names.
 							playerHistory.addField(`Changed on ${moment(parseInt(namehistory[i].changedToAt)).format('Do MMMM YYYY')}`, namehistory[i].name);
 						}
+					}
+
+					if (namehistory_changed) {
+						let allNames = '';
+						for (let i = 0; i < namehistory.length; i++) {
+							allNames += namehistory[i].name;
+							if (i !== (namehistory.length - 1)) {
+								allNames += ', ';
+							}
+						}
+						playerHistory.addField(`${args[0]} has too many names, at ${namehistory.length} which is more than RichEmbeds can handle. So it has been truncated.`, `All of **${args[0]}'s** names are ${allNames}`);
 					}
 					message.channel.send(playerHistory);
 				});
