@@ -18,7 +18,7 @@ module.exports = {
 				);
 			});
 		} else {
-			message.reply('You must only provide a username after the command.')
+			message.reply('You must only provide a username after the command.');
 		}
-	}
-}
+	},
+};
