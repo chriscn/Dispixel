@@ -23,7 +23,7 @@
     "discord.js": "^11.4.2",
     "hypixeljs": "^1.2.3",
     "moment": "^2.22.2",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
   },
   "devDependencies": {
     "eslint": "^5.7.0"
