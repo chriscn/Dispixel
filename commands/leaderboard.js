@@ -6,7 +6,7 @@ const gameConversion = JSON.parse(fs.readFileSync('./files/gameconversion.json')
 const allGames = Object.keys(gameConversion);
 
 function captalise(string) {
-	let lowercase = string.toString().toLocaleLowerCase();
+	const lowercase = string.toString().toLocaleLowerCase();
 	return lowercase.charAt(0).toLocaleLowerCase() + lowercase.slice(1);
 }
 
@@ -20,8 +20,8 @@ module.exports = {
 	args: true,
 	execute(message, args) {
 		if (allGames.indexOf(args[0]) > -1) {
-			let apiGame = convertGameType(args[0]);
-			let userfriendlyGame = captalise(args[0]);
+			const apiGame = convertGameType(args[0]);
+			const userfriendlyGame = captalise(args[0]);
 		} else {
 			message.channel.send(new Discord.RichEmbed()
 				.setTitle(`Unknown Game Type: **${args[0]}**`)
