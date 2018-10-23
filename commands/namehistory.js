@@ -14,10 +14,11 @@ module.exports = {
 				console.log(`UUID of ${args[0]} is ${uuid}`);
 				mojangjs.nameHistory.byUUID(uuid, (err, namehistory) => {
 					if (err) console.error(err);
+					console.log(namehistory);
 					const playerHistory = new Discord.RichEmbed()
 						.setTitle(`**${args[0]}'s** Name History`)
-						.setColor('#8c7ae6')
-						.setThumbnail('https://crafatar.com/avatars/' + uuid);
+						.setThumbnail('https://visage.surgeplay.com/face/' + uuid)
+						.setColor('#8c7ae6');
 
 					for (let i = 0; i < namehistory.length; i++) {
 						if (namehistory[i].changedToAt === undefined) {
