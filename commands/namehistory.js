@@ -11,10 +11,8 @@ module.exports = {
 		if (args.length === 1 && args[0] !== undefined) {
 			mojangjs.getUUID(args[0], (err, uuid) => {
 				if (err) console.error(err);
-				console.log(`UUID of ${args[0]} is ${uuid}`);
 				mojangjs.nameHistory.byUUID(uuid, (err, namehistory) => {
 					if (err) console.error(err);
-					console.log(namehistory);
 					const playerHistory = new Discord.RichEmbed()
 						.setTitle(`**${args[0]}'s** Name History`)
 						.setThumbnail('https://visage.surgeplay.com/face/' + uuid)
