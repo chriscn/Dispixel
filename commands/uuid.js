@@ -10,12 +10,12 @@ module.exports = {
 		if (args.length === 1) {
 			mojangjs.getUUID(args[0], (err, res) => {
 				if (err) console.log(err);
-
+				console.log(res);
 				message.channel.send(new Discord.RichEmbed()
-					.setTitle(`**${res.name}**'s UUID`)
+					.setTitle(`**${args[0]}**'s UUID`)
 					.setColor('#44bd32')
 					.setThumbnail('https://visage.surgeplay.com/face/' + res)
-					.addField('Trimmed UUID:', res.id)
+					.addField('Trimmed UUID:', res)
 				);
 			});
 		} else {
