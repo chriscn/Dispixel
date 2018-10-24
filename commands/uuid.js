@@ -28,7 +28,6 @@ module.exports = {
 					.setTitle(`**${res.name}**'s UUID`)
 					.setColor('#44bd32')
 					.setThumbnail('https://visage.surgeplay.com/face/' + res)
-					.addField('UUID:', convertTrimmedUUIDToRegular(res.id))
 					.addField('Trimmed UUID:', res.id)
 				);
 			});
