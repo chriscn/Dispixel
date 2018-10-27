@@ -2,6 +2,20 @@ const mojangjs = require('mojangjs');
 const Discord = require('discord.js');
 const moment = require('moment');
 
+function joinNames(playerNameHistory) {
+	let allNames = '';
+	console.log(playerNameHistory.length);
+	for (let i = 0; i < playerNameHistory.length; i++) {
+		console.log(`We are at ${i} which is ${playerNameHistory[i].name}`);
+		if (i + 1 !== playerNameHistory.length) {
+			allNames += playerNameHistory[i].name + ', ';
+		} else {
+			allNames += playerNameHistory[i].name;
+		}
+	}
+	return allNames;
+}
+
 module.exports = {
 	name: 'namehistory',
 	description: 'Get\'s the name history of a player.',
@@ -39,16 +53,8 @@ module.exports = {
 						}
 					}
 
-					if (namehistory_changed) {
-						let allNames = '';
-						for (let i = 0; i < namehistory.length; i++) {
-							allNames += namehistory[i].name;
-							if (i !== (namehistory.length - 1)) {
-								allNames += ', ';
-							}
-						}
-						playerHistory.addField(`${args[0]} has too many names, at ${namehistory.length} which is more than RichEmbeds can handle. So it has been truncated.`, `All of **${args[0]}'s** names are: ${allNames}`);
-					}
+					if (namehistory_changed) playerHistory.addField(`${args[0]} has too many names, at ${namehistory.length} which is more than RichEmbeds can handle.`, `All of **${args[0]}'s** names are ${joinNames(namehistory)}`);
+
 					message.channel.send(playerHistory);
 				});
 			});
