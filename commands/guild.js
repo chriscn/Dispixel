@@ -1,19 +1,21 @@
 const Discord = require('discord.js');
 const hypixeljs = require('hypixeljs');
+const mojangjs = require('mojangjs');
 const util = require('../methods');
 
 function sendGuildEmbed(message, guild) {
 	guild.members.forEach(member => {
 		if (member != null) {
 			if (['Guild Master', 'GUILDMASTER'].indexOf(member.rank) > -1) {
-				hypixeljs.getPlayer.byUuid(member.uuid, (err, player) => {
+				mojangjs.getNameFromUUID(member.uuid.replace(/-/g, ''), (err, res) => {
 					if (err) console.error(err);
-					guild.master = player.displayname;
+
+					guild.master = res;
 
 					message.channel.send(new Discord.RichEmbed()
 						.setTitle(`${guild.name}`)
 						.setURL(`https://hypixel.net/guilds/${guild._id}`)
-						.color('#2196F3')
+						.setColor('#2196F3')
 						.setThumbnail(guild.banner ? `https://hypixel.net/data/guild_banners/100x200/${guild._id}.png` : 'https://hypixel.net/styles/hypixel-uix/hypixel/default-guild-banner.png')
 						.addField('Guild Master:', guild.master, true)
 						.addField('Members:', guild.members.length, true)

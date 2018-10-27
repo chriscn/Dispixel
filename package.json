@@ -22,6 +22,7 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "hypixeljs": "^1.2.3",
+    "mojangjs": "^1.1.1",
     "moment": "^2.22.2",
     "request": "^2.88.0"
   },
