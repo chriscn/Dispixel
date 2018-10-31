@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const request = require('request');
 
-const gameConversion = JSON.parse(fs.readFileSync('./files/gameconversion.json').toString());
+const gameConversion = JSON.parse(fs.readFileSync('./lib/gameconversion.json').toString());
 const allGames = Object.keys(gameConversion);
 
 function getEndpointGame(reference) {
