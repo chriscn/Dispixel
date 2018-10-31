@@ -12,31 +12,31 @@ module.exports = {
 		return networkExp < 0 ? 1 : Math.floor(1 + REVERSE_PQ_PREFIX + Math.sqrt(REVERSE_CONST + GROWTH_DIVIDES_2 * networkExp));
 	},
 
-	guildLevel: guildExp => {
-		if (guildExp < 100000) {
+	guildLevel: number => {
+		if (number < 100000) {
 			return 0;
-		} else if (guildExp < 250000) {
+		} else if (number < 250000) {
 			return 1;
-		} else if (guildExp < 500000) {
+		} else if (number < 500000) {
 			return 2;
-		} else if (guildExp < 1000000) {
+		} else if (number < 1000000) {
 			return 3;
-		} else if (guildExp < 1750000) {
+		} else if (number < 1750000) {
 			return 4;
-		} else if (guildExp < 2750000) {
+		} else if (number < 2750000) {
 			return 5;
-		} else if (guildExp < 4000000) {
+		} else if (number < 4000000) {
 			return 6;
-		} else if (guildExp < 5500000) {
+		} else if (number < 5500000) {
 			return 7;
-		} else if (guildExp < 7500000) {
+		} else if (number < 7500000) {
 			return 8;
-		} else if (guildExp < 10000000) {
+		} else if (number < 10000000) {
 			return 9;
-		} else if (guildExp < 23000000) {
-			return 9 + Math.floor((guildExp - 7500000) / 2500000);
-		} else if (guildExp >= 23000000) {
-			return 14 + Math.floor((guildExp - 20000000) / 3000000);
+		} else if (number < 23000000) {
+			return 9 + Math.floor((number - 7500000) / 2500000);
+		} else if (number >= 23000000) {
+			return 14 + Math.floor((number - 20000000) / 3000000);
 		}
 	},
 
