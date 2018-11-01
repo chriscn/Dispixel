@@ -32,18 +32,7 @@ module.exports = {
 						.setThumbnail('https://visage.surgeplay.com/face/' + uuid)
 						.setColor('#8c7ae6');
 
-					let namehistory_length;
-					let namehistory_changed;
-
-					if (namehistory.length > 20) {
-						namehistory_length = 20;
-						namehistory_changed = true;
-					} else {
-						namehistory_length = namehistory.length;
-						namehistory_changed = false;
-					}
-
-					for (let i = 0; i < namehistory_length; i++) {
+					for (let i = 0; i < (namehistory.length <= 20 ? namehistory.length : 20); i++) {
 						if (namehistory[i].changedToAt === undefined) {
 							// the first name registered.
 							playerHistory.addField('First Name Registered', namehistory[i].name);
@@ -53,7 +42,7 @@ module.exports = {
 						}
 					}
 
-					if (namehistory_changed) playerHistory.addField(`${args[0]} has too many names, at ${namehistory.length} which is more than RichEmbeds can handle.`, `All of **${args[0]}'s** names are ${joinNames(namehistory)}`);
+					if (namehistory.length > 20) playerHistory.addField(`${args[0]} has too many names, at ${namehistory.length} which is more than RichEmbeds can handle.`, `All of **${args[0]}'s** names are ${joinNames(namehistory)}`);
 
 					message.channel.send(playerHistory);
 				});
