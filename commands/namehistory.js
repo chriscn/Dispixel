@@ -4,9 +4,7 @@ const moment = require('moment');
 
 function joinNames(playerNameHistory) {
 	let allNames = '';
-	console.log(playerNameHistory.length);
 	for (let i = 0; i < playerNameHistory.length; i++) {
-		console.log(`We are at ${i} which is ${playerNameHistory[i].name}`);
 		if (i + 1 !== playerNameHistory.length) {
 			allNames += playerNameHistory[i].name + ', ';
 		} else {
