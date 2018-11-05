@@ -18,7 +18,7 @@ for (const file of commandsFiles) {
 const cooldowns = new Discord.Collection();
 
 bot.on('ready', () => {
-	console.log(`Dispixel started at ${moment()}`);
+	console.log(`Dispixel started at ${moment()}, running on ${bot.guilds.array().length} guilds.`);
 });
 
 bot.on('message', message => {
