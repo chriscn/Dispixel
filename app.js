@@ -19,6 +19,7 @@ const cooldowns = new Discord.Collection();
 
 bot.on('ready', () => {
 	console.log(`Dispixel started at ${moment()}, running on ${bot.guilds.array().length} guilds.`);
+	bot.user.setActivity('Hypixel', { type: 'WATCHING' }).then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`)).catch(console.error);
 });
 
 bot.on('message', message => {
