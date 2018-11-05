@@ -1,16 +1,16 @@
 const hypixeljs = require('hypixeljs');
 const Discord = require('discord.js');
-const util = require('../methods');
+const dispixelutil = require('../lib/dispixelutil');
 
 function getPlayerEmbed(player) {
 	return new Discord.RichEmbed()
-		.setTitle(`${player.displayname} **(Currently ${util.isOnline(player.lastLogin, player.lastLogout)})**`)
+		.setTitle(`${player.displayname} **(Currently ${dispixelutil.isOnline(player.lastLogin, player.lastLogout)})**`)
 		.setThumbnail('https://visage.surgeplay.com/face/' + player.uuid)
-		.addField('Rank:', util.getRank(player), true)
-		.addField('Level:', util.networkLevel(player.networkExp), true)
-		.addField('Karma:', player.karma ? util.numberWithCommas(player.karma) : 0, true)
-		.addField('Achievement Points:', player.achievementPoints ? util.numberWithCommas(player.achievementPoints) : 0, true)
-		.addField('Joined:', player.firstLogin ? util.formatAPITime(player.firstLogin) : 'Hasn\'t Joined', true);
+		.addField('Rank:', dispixelutil.getRank(player), true)
+		.addField('Level:', dispixelutil.networkLevel(player.networkExp), true)
+		.addField('Karma:', player.karma ? dispixelutil.numberWithCommas(player.karma) : 0, true)
+		.addField('Achievement Points:', player.achievementPoints ? dispixelutil.numberWithCommas(player.achievementPoints) : 0, true)
+		.addField('Joined:', player.firstLogin ? dispixelutil.formatAPITime(player.firstLogin) : 'Hasn\'t Joined', true);
 }
 
 module.exports = {

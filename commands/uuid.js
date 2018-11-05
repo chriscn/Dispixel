@@ -9,7 +9,6 @@ function convertTrimmedUUIDToRegular(trimmedUUID) {
 	fullUUID = insert(fullUUID, 23, '-');
 	return fullUUID;
 }
-
 function insert(str, index, value) {
 	return str.substr(0, index) + value + str.substr(index);
 }
@@ -23,14 +22,18 @@ module.exports = {
 		if (args.length === 1) {
 			mojangjs.getUUID(args[0], (err, res) => {
 				if (err) console.log(err);
-
-				message.channel.send(new Discord.RichEmbed()
-					.setTitle(`**${res.name}**'s UUID`)
-					.setColor('#44bd32')
-					.setThumbnail('https://visage.surgeplay.com/face/' + res)
-					.addField('UUID:', convertTrimmedUUIDToRegular(res.id))
-					.addField('Trimmed UUID:', res.id)
-				);
+				console.log(res);
+				if (res === undefined) {
+					message.reply('that player could not be found.');
+				} else {
+					message.channel.send(new Discord.RichEmbed()
+						.setTitle(`**${args[0]}**'s UUID`)
+						.setColor('#44bd32')
+						.setThumbnail('https://visage.surgeplay.com/face/' + res)
+						.addField('Trimmed UUID:', res)
+						.addField('UUID:', convertTrimmedUUIDToRegular(res))
+					);
+				}
 			});
 		} else {
 			message.reply('You must only provide a username after the command.');

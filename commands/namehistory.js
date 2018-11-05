@@ -2,6 +2,18 @@ const mojangjs = require('mojangjs');
 const Discord = require('discord.js');
 const moment = require('moment');
 
+function joinNames(playerNameHistory) {
+	let allNames = '';
+	for (let i = 0; i < playerNameHistory.length; i++) {
+		if (i + 1 !== playerNameHistory.length) {
+			allNames += playerNameHistory[i].name + ', ';
+		} else {
+			allNames += playerNameHistory[i].name;
+		}
+	}
+	return allNames;
+}
+
 module.exports = {
 	name: 'namehistory',
 	description: 'Get\'s the name history of a player.',
@@ -18,18 +30,7 @@ module.exports = {
 						.setThumbnail('https://visage.surgeplay.com/face/' + uuid)
 						.setColor('#8c7ae6');
 
-					let namehistory_length;
-					let namehistory_changed;
-
-					if (namehistory.length > 20) {
-						namehistory_length = 20;
-						namehistory_changed = true;
-					} else {
-						namehistory_length = namehistory.length;
-						namehistory_changed = false;
-					}
-
-					for (let i = 0; i < namehistory_length; i++) {
+					for (let i = 0; i < (namehistory.length <= 20 ? namehistory.length : 20); i++) {
 						if (namehistory[i].changedToAt === undefined) {
 							// the first name registered.
 							playerHistory.addField('First Name Registered', namehistory[i].name);
@@ -39,16 +40,8 @@ module.exports = {
 						}
 					}
 
-					if (namehistory_changed) {
-						let allNames = '';
-						for (let i = 0; i < namehistory.length; i++) {
-							allNames += namehistory[i].name;
-							if (i !== (namehistory.length - 1)) {
-								allNames += ', ';
-							}
-						}
-						playerHistory.addField(`${args[0]} has too many names, at ${namehistory.length} which is more than RichEmbeds can handle. So it has been truncated.`, `All of **${args[0]}'s** names are ${allNames}`);
-					}
+					if (namehistory.length > 20) playerHistory.addField(`${args[0]} has too many names, at ${namehistory.length} which is more than RichEmbeds can handle.`, `All of **${args[0]}'s** names are ${joinNames(namehistory)}`);
+
 					message.channel.send(playerHistory);
 				});
 			});
