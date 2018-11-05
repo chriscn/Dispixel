@@ -19,7 +19,6 @@ function sendGuildEmbed(message, guild) {
 						.setThumbnail(guild.banner ? `https://hypixel.net/data/guild_banners/100x200/${guild._id}.png` : 'https://hypixel.net/styles/hypixel-uix/hypixel/default-guild-banner.png')
 						.addField('Guild Master:', guild.master, true)
 						.addField('Members:', guild.members.length, true)
-						.addField('Level:', dispixelutil.guildLevel(guild.exp), true)
 						.addField('Experience:', dispixelutil.numberWithCommas(guild.exp), true)
 						.addField('Legacy Rank:', guild.legacyRanking != undefined ? dispixelutil.addSuffix(dispixelutil.numberWithCommas(guild.legacyRanking)) : 'Unknown')
 						.addField('Created At:', dispixelutil.formatAPITime(guild.created))
