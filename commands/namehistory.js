@@ -18,7 +18,7 @@ module.exports = {
 	name: 'namehistory',
 	description: 'Get\'s the name history of a player.',
 	args: true,
-	usage: 'namehistory [username]',
+	usage: '[username]',
 	execute(message, args) {
 		if (args.length === 1 && args[0] !== undefined) {
 			mojangjs.getUUID(args[0], (err, uuid) => {

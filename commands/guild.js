@@ -32,6 +32,7 @@ function sendGuildEmbed(message, guild) {
 module.exports = {
 	name: 'guild',
 	description: 'Gets information about a certain guild.',
+	usage: '[name/ID]',
 	args: true,
 	execute(message, args) {
 		if (args[0].match(/[a-f0-9]{24}/) && args.length === 1) {

@@ -17,6 +17,7 @@ module.exports = {
 	name: 'player',
 	description: 'Get detailed information about a player using the Hypixel API',
 	args: true,
+	usage: '[username/UUID]',
 	cooldown: 10,
 	execute(message, args) {
 		if (args[0].length <= 16) {

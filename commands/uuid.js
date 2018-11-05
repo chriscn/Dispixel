@@ -17,7 +17,7 @@ module.exports = {
 	name: 'uuid',
 	description: 'Gets the UUID of a given player.',
 	args: true,
-	usage: 'uuid [playername]',
+	usage: '[playername]',
 	execute(message, args) {
 		if (args.length === 1) {
 			mojangjs.getUUID(args[0], (err, res) => {
