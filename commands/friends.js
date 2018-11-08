@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const hypixeljs = require('hypixeljs');
 const mojangjs = require('mojangjs');
+const util = require('util');
 
 module.exports = {
 	name: 'friends',
@@ -19,6 +20,8 @@ module.exports = {
 					message.channel.send(msg);
 				});
 			});
+		} else {
+			message.reply(`The player ${args[0]} does not exist as it is longer than 16 characters. Double check the spelling!`);
 		}
 	},
 };
