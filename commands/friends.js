@@ -12,12 +12,21 @@ module.exports = {
 			mojangjs.getUUID(args[0], (err, uuid) => {
 				if (err) console.error(err);
 				hypixeljs.getFriends(uuid, (err, friends) => {
-					if (err) console.error(err);
-					let msg = '';
-					friends.forEach(friend => {
-						msg += `${friend._id}, `;
-					});
-					message.channel.send(msg);
+				//	console.log(JSON.stringify(friends));
+					if (friends != null) {
+						(async () => {
+							const getNameFromUUID = util.promisify(mojangjs.getNameFromUUID);
+							try {
+								const playerUsernames = await Promise.all(friends.map(member => getNameFromUUID(member._id)));
+								message.channel.send(playerUsernames);
+							} catch (err) {
+								// handle err
+								console.error(err);
+							}
+						})();
+					} else {
+						message.channel.send(`The player ${args[0]} doesn't have any friends :(`);
+					}
 				});
 			});
 		} else {
