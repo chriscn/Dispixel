@@ -27,6 +27,6 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "eslint": "^5.7.0"
+    "eslint": "^5.8.0"
   }
 }
