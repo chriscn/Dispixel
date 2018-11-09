@@ -14,12 +14,17 @@ module.exports = {
 				hypixeljs.getFriends(uuid, (err, friends) => {
 				//	console.log(JSON.stringify(friends));
 					if (friends != null) {
+						message.channel.send(`Fetching Friends for ${args[0]}`).then((msg) => {
+							msg
+						});
 						(async () => {
 							const getNameFromUUID = util.promisify(mojangjs.getNameFromUUID);
 							try {
-								friends.map(friend => console.log(friend._id)));
-								const playerUsernames = await Promise.all(friends.map(member => getNameFromUUID(member._id)));
-								message.channel.send(playerUsernames);
+								let usernames = await Promise.all(friends.map(friend => getNameFromUUID(friend._id)));
+								console.log(usernames.join(
+									', '
+								))
+								message.channel.send(usernames.join(', '));
 							} catch (err) {
 								// handle err
 								console.error(err);
