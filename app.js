@@ -87,5 +87,10 @@ bot.on('message', message => {
 discordBotList.on('posted', () => {
 	console.log('Posted Server Count.');
 });
+
+discordBotList.on('error', err => {
+	console.error(err);
+});
+
 bot.login(discord_token);
 hypixeljs.login(hypixel_api_keys);
