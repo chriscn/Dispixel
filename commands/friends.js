@@ -17,6 +17,7 @@ module.exports = {
 						(async () => {
 							const getNameFromUUID = util.promisify(mojangjs.getNameFromUUID);
 							try {
+								friends.map(friend => console.log(friend._id)));
 								const playerUsernames = await Promise.all(friends.map(member => getNameFromUUID(member._id)));
 								message.channel.send(playerUsernames);
 							} catch (err) {
