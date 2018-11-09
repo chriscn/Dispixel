@@ -2,10 +2,12 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const hypixeljs = require('hypixeljs');
 const moment = require('moment');
+const DBL = require('dblapi.js');
 const { prefix, icons } = require('./config.json');
-const { discord_token, hypixel_api_keys } = require('./key.json');
+const { discord_token, hypixel_api_keys, discord_bots } = require('./key.json');
 
 const bot = new Discord.Client();
+const discordBotList = new DBL(discord_token, bot);
 bot.commands = new Discord.Collection();
 
 const commandsFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -80,6 +82,14 @@ bot.on('message', message => {
 		);
 		console.error(error);
 	}
+});
+
+discordBotList.on('posted', () => {
+	console.log('Posted Server Count.');
+});
+
+discordBotList.on('error', err => {
+	console.error(err);
 });
 
 bot.login(discord_token);
