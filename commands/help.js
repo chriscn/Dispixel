@@ -1,6 +1,10 @@
 const Discord = require('discord.js');
 const { prefix } = require('../config.json');
 
+function captalise(str) {
+	return str.charAt(0).toUpperCase() + str.substr(1);
+}
+
 module.exports = {
 	name: 'help',
 	description: 'List all of my commands or info about a specific commands.',
@@ -35,7 +39,7 @@ module.exports = {
 			return message.reply('that\'s not a valid command!');
 		}
 
-		helpEmbed.setTitle(`${command.name} Help`)
+		helpEmbed.setTitle(`${captalise(command.name)} Help`)
 
 		if (command.aliases) helpEmbed.addField('**Aliases:**', `${command.aliases.join(', ')}`);
 		if (command.description) helpEmbed.addField('**Description:**', `${command.description}`);
