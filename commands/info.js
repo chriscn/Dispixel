@@ -1,3 +1,5 @@
+import app from app.js
+
 const Discord = require('discord.js');
 const hypixeljs = require('hypixeljs');
 const {
@@ -12,7 +14,7 @@ module.exports = {
 	execute(message) {
 		message.channel.send(new Discord.RichEmbed()
 			.setTitle('Dispixel Information')
-			.addField('Active in' + Discord.guilds.size + 'discord servers!')
+			.addField('Active in' + Discord.Client().guilds.size + 'discord servers!')
 			.addField('Created by Thorin')
 			.setThumbnail('https://github.com/ConorTheDev/Dispixel/blob/develop/Dispixel.jpg?raw=true')
 			.setColor('#c7a153')
