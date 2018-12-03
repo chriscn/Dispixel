@@ -2,11 +2,15 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const hypixeljs = require('hypixeljs');
 const moment = require('moment');
+const DBL = require("dblapi.js");
 const { prefix, icons } = require('./config.json');
 const { discord_token, hypixel_api_keys, discord_bots } = require('./key.json');
 
+
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
+
+const dbl = new DBL(discord_bots, bot);
 
 const commandsFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -20,6 +24,9 @@ const cooldowns = new Discord.Collection();
 bot.on('ready', () => {
 	console.log(`Dispixel started at ${moment()}, running on ${bot.guilds.array().length} guilds.`);
 	bot.user.setActivity('Hypixel API', { type: 'PLAYING' }).then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`)).catch(console.error);
+	setInterval(() => {
+		dbl.postStats(bot.guilds.size);
+	}, 7200);
 });
 
 bot.on('message', message => {
@@ -81,6 +88,14 @@ bot.on('message', message => {
 		console.error(error);
 	}
 });
+
+dbl.on('posted', () => {
+	console.log('Server count posted!');
+})
+
+dbl.on('error', e => {
+	console.log(`Oops! ${e}`);
+})
 
 
 bot.login(discord_token);
