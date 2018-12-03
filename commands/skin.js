@@ -16,8 +16,8 @@ module.exports = {
 					message.channel.send(new Discord.RichEmbed()
 						.setTitle(`${args[0]}'s Skin`)
 						.addField(`${args[0]}'s UUID`, uuid)
-						.setImage(`https://crafatar.com/renders/body/${uuid}.jpeg`)
-					);
+						.setImage(`https://visage.surgeplay.com/full/${uuid.toString()}`)
+					).then();
 				}).catch(err => console.error(err));
 			}
 		} else {
