@@ -1,4 +1,9 @@
+const Discord = require('discord.js');
 const { prefix } = require('../config.json');
+
+function captalise(str) {
+	return str.charAt(0).toUpperCase() + str.substr(1);
+}
 
 module.exports = {
 	name: 'help',
@@ -7,18 +12,19 @@ module.exports = {
 	usage: '[commands name]',
 	cooldown: 5,
 	execute(message, args) {
-		const data = [];
+		const helpEmbed = new Discord.RichEmbed();
+		helpEmbed.setColor('#00a8ff');
 		const { commands } = message.client;
 
 		if (!args.length) {
-			data.push('Here\'s a list of all my commands:');
-			data.push(commands.map(command => command.name).join(', '));
-			data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
+			helpEmbed.setTitle('Dispixel Help:');
+			helpEmbed.addField('Here\'s a list of all of the commands available:', commands.map(command => command.name).join(', '))
+			helpEmbed.addField(`You can use ${prefix}help [command] to get information about a specific command.`, `e.g. ${prefix}help ping`);
 
-			return message.author.send(data, { split: true })
+			return message.author.send(helpEmbed)
 				.then(() => {
 					if (message.channel.type === 'dm') return;
-					message.reply('I\'ve sent you a DM with all my commands!');
+					message.reply('I\'ve sent you a DM with all my help message and commands!');
 				})
 				.catch(error => {
 					console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
@@ -33,14 +39,14 @@ module.exports = {
 			return message.reply('that\'s not a valid command!');
 		}
 
-		data.push(`**Name:** ${command.name}`);
+		helpEmbed.setTitle(`${captalise(command.name)} Help`)
 
-		if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-		if (command.description) data.push(`**Description:** ${command.description}`);
-		if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
+		if (command.aliases) helpEmbed.addField('**Aliases:**', `${command.aliases.join(', ')}`);
+		if (command.description) helpEmbed.addField('**Description:**', `${command.description}`);
+		if (command.usage) helpEmbed.addField('**Usage:**', `${prefix}${command.name} ${command.usage}`);
 
-		data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
+		helpEmbed.addField('**Cooldown:**', `${command.cooldown || 3} second(s)`);
 
-		message.channel.send(data, { split: true });
+		message.channel.send(helpEmbed);
 	},
 };
