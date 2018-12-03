@@ -28,7 +28,7 @@ module.exports = {
 						.setThumbnail('https://visage.surgeplay.com/face/' + uuid)
 						.setColor('#8c7ae6');
 
-					for (let i = 0; i < (namehistory.length <= 20 ? namehistory.length : 20); i++) {
+					for (let i = 0; i < (namehistory.length <= 5 ? namehistory.length : 5); i++) {
 						if (namehistory[i].changedToAt === undefined) {
 							// the first name registered.
 							playerHistory.addField('First Name Registered', namehistory[i].name);
