@@ -9,32 +9,15 @@ module.exports = {
 	description: 'Gets the friends of a player.',
 	execute(message, args) {
 		if (args[0].length <= 16) {
-			mojangjs.getUUID(args[0], (err, uuid) => {
-				if (err) console.error(err);
-				hypixeljs.getFriends(uuid, (err, friends) => {
-				//	console.log(JSON.stringify(friends));
+			mojangjs.getUUID(args[0]).then(uuid => {
+				hypixeljs.getFriends(uuid).then(friends => {
 					if (friends != null) {
-						message.channel.send(`Fetching Friends for ${args[0]}`).then((msg) => {
-							msg
+						message.channel.send(`Fetching friends for ${args[0]}`).then(msg => {
+							msg.edit('Updated Message');
 						});
-						(async () => {
-							const getNameFromUUID = util.promisify(mojangjs.getNameFromUUID);
-							try {
-								let usernames = await Promise.all(friends.map(friend => getNameFromUUID(friend._id)));
-								console.log(usernames.join(
-									', '
-								))
-								message.channel.send(usernames.join(', '));
-							} catch (err) {
-								// handle err
-								console.error(err);
-							}
-						})();
-					} else {
-						message.channel.send(`The player ${args[0]} doesn't have any friends :(`);
 					}
 				});
-			});
+			}).catch(err => console.error(err));
 		} else {
 			message.reply(`The player ${args[0]} does not exist as it is longer than 16 characters. Double check the spelling!`);
 		}
