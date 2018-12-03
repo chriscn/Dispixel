@@ -7,9 +7,7 @@ function sendGuildEmbed(message, guild) {
 	guild.members.forEach(member => {
 		if (member != null) {
 			if (['Guild Master', 'GUILDMASTER'].indexOf(member.rank) > -1) {
-				mojangjs.getNameFromUUID(member.uuid.replace(/-/g, ''), (err, res) => {
-					if (err) console.error(err);
-
+				mojangjs.getNameFromUUID(member.uuid).then(res => {
 					guild.master = res;
 
 					message.channel.send(new Discord.RichEmbed()
@@ -23,7 +21,7 @@ function sendGuildEmbed(message, guild) {
 						.addField('Legacy Rank:', guild.legacyRanking != undefined ? dispixelutil.addSuffix(dispixelutil.numberWithCommas(guild.legacyRanking)) : 'Unknown')
 						.addField('Created At:', dispixelutil.formatAPITime(guild.created))
 					);
-				});
+				}).catch(err => console.error(err));
 			}
 		}
 	});
@@ -36,17 +34,15 @@ module.exports = {
 	args: true,
 	execute(message, args) {
 		if (args[0].match(/[a-f0-9]{24}/) && args.length === 1) {
-			hypixeljs.getGuild.byId(args[0], (err, guild) => {
-				if (err) console.error(err);
+			hypixeljs.getGuild.byId(args[0]).then(guild => {
 				if (guild == null) message.reply('that guild doesn\'t exist. Perhaps you should create it?');
 				sendGuildEmbed(message, guild);
-			});
+			}).catch(err => console.error(err));
 		} else {
-			hypixeljs.getGuild.byName(args.join(' '), (err, guild) => {
-				if (err) console.error(err);
+			hypixeljs.getGuild.byName(args.join(' ')).then(guild => {
 				if (guild == null) return message.reply('that guild doesn\'t exist. Perhaps you should create it?');
 				sendGuildEmbed(message, guild);
-			});
+			}).catch(err => console.error(err));
 		}
 	},
 };

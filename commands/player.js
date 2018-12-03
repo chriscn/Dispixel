@@ -21,15 +21,13 @@ module.exports = {
 	cooldown: 10,
 	execute(message, args) {
 		if (args[0].length <= 16) {
-			hypixeljs.getPlayer.byName(args[0], (err, json) => {
-				if (err) console.error(err);
+			hypixeljs.getPlayer.byName(args[0]).then(json => {
 				message.channel.send(getPlayerEmbed(json));
-			});
+			}).catch(err => console.error(err));
 		} else if (args[0].match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/) || args[0].match(/[0-9a-f]{32}/)) { // tests against a full uuid or a trimmed uuid
-			hypixeljs.getPlayer.byUuid(args[0], (err, json) => {
-				if (err) console.error(err);
+			hypixeljs.getPlayer.byUuid(args[0]).then(json => {
 				message.channel.send(getPlayerEmbed(json));
-			});
+			}).catch(err => console.error(err));
 		} else {
 			message.reply(`the player name provided ${args[0]} was not valid as it was more than sixteen characters and wasn't in a UUID format. We do support UUIDs!`);
 		}
