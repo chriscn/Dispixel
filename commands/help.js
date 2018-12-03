@@ -15,7 +15,7 @@ module.exports = {
 		if (!args.length) {
 			helpEmbed.setTitle('Dispixel Help:');
 			helpEmbed.addField('Here\'s a list of all of the commands available:', commands.map(command => command.name).join(', '))
-			helpEmbed.addField(`You can use ${prefix}help [command] to get information about a specific command.`)
+			helpEmbed.addField(`You can use ${prefix}help [command] to get information about a specific command.`, `e.g. ${prefix}help ping`);
 
 			return message.author.send(helpEmbed)
 				.then(() => {
