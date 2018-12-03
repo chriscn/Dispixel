@@ -17,12 +17,10 @@ module.exports = {
 	name: 'uuid',
 	description: 'Gets the UUID of a given player.',
 	args: true,
-	usage: 'uuid [playername]',
+	usage: '[playername]',
 	execute(message, args) {
 		if (args.length === 1) {
-			mojangjs.getUUID(args[0], (err, res) => {
-				if (err) console.log(err);
-				console.log(res);
+			mojangjs.getUUID(args[0]).then(res => {
 				if (res === undefined) {
 					message.reply('that player could not be found.');
 				} else {
@@ -34,7 +32,7 @@ module.exports = {
 						.addField('UUID:', convertTrimmedUUIDToRegular(res))
 					);
 				}
-			});
+			}).catch(err => console.error(err));
 		} else {
 			message.reply('You must only provide a username after the command.');
 		}

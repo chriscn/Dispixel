@@ -8,12 +8,8 @@ module.exports = {
 	usage: 'hpinfo',
 	args: false,
 	execute(message) {
-		let allerrors;
-		hypixeljs.playersOnline((err, playersOnline) => {
-			allerrors += err;
-			hypixeljs.watchdog((err, watchdog) => {
-				allerrors += err;
-				if (allerrors) console.error(err);
+		hypixeljs.playersOnline().then(playersOnline => {
+			hypixeljs.watchdog().then(watchdog => {
 				message.channel.send(new Discord.RichEmbed()
 					.setTitle('Hypixel Information')
 					.addField('Players Online', `There are ${playersOnline} players online`)
@@ -22,7 +18,7 @@ module.exports = {
 					.setThumbnail('https://i.imgur.com/14648Pn.png')
 					.setColor('#c7a153')
 				);
-			});
-		});
+			}).catch(err => console.error(err));
+		}).catch(err => console.error(err));
 	},
 };
