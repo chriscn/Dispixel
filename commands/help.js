@@ -43,7 +43,7 @@ module.exports = {
 
 		if (command.aliases) helpEmbed.addField('**Aliases:**', `${command.aliases.join(', ')}`);
 		if (command.description) helpEmbed.addField('**Description:**', `${command.description}`);
-		if (command.usage) helpEmbed.addField('**Usage:**', `${prefix}${command.name}${command.usage}`);
+		if (command.usage) helpEmbed.addField('**Usage:**', `${prefix}${command.name} ${command.usage}`);
 
 		helpEmbed.addField('**Cooldown:**', `${command.cooldown || 3} second(s)`);
 
