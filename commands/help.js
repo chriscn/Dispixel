@@ -8,7 +8,7 @@ module.exports = {
 	usage: '[commands name]',
 	cooldown: 5,
 	execute(message, args) {
-		let helpEmbed = new Discord.RichEmbed();
+		const helpEmbed = new Discord.RichEmbed();
 		helpEmbed.setColor('#00a8ff');
 		const { commands } = message.client;
 
@@ -37,11 +37,11 @@ module.exports = {
 
 		helpEmbed.setTitle(`${command.name} Help`)
 
-		if (command.aliases) helpEmbed.addField(`**Aliases:**`, command.aliases.join(', '));
-		if (command.description) data.push(`**Description:**`, $command.description);
-		if (command.usage) data.push(`**Usage:**`, prefix+command.name+command.usage});
+		if (command.aliases) helpEmbed.addField('**Aliases:**', `${command.aliases.join(', ')}`);
+		if (command.description) helpEmbed.addField('**Description:**', `${command.description}`);
+		if (command.usage) helpEmbed.addField('**Usage:**', `${prefix}${command.name}${command.usage}`);
 
-		helpEmbed.addField(`**Cooldown:**`, `${command.cooldown || 3} second(s)`);
+		helpEmbed.addField('**Cooldown:**', `${command.cooldown || 3} second(s)`);
 
 		message.channel.send(helpEmbed);
 	},
