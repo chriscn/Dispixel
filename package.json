@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/chriscn/Dispixel#readme",
   "dependencies": {
+    "dblapi.js": "^2.3.0",
     "discord.js": "^11.4.2",
     "hypixeljs": "^1.4.0",
     "mojangjs": "^2.0.3",
