@@ -11,6 +11,7 @@ module.exports = {
 		const { commands } = message.client;
 
 		if (!args.length) {
+			data.push('Dispixel Help:')
 			data.push('Here\'s a list of all my commands:');
 			data.push(commands.map(command => command.name).join(', '));
 			data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
@@ -18,7 +19,7 @@ module.exports = {
 			return message.author.send(data, { split: true })
 				.then(() => {
 					if (message.channel.type === 'dm') return;
-					message.reply('I\'ve sent you a DM with all my commands!');
+					message.reply('I\'ve sent you a DM with all my help message and commands!');
 				})
 				.catch(error => {
 					console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
