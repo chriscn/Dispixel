@@ -16,7 +16,7 @@ module.exports = {
 			.setTitle('Dispixel Information')
 			.addField('Active in' + Discord.Client().guilds.size + 'discord servers!')
 			.addField('Created by Thorin')
-			.setThumbnail('https://github.com/ConorTheDev/Dispixel/blob/develop/Dispixel.jpg?raw=true')
+			.setThumbnail('https://github.com/chriscn/Dispixel/blob/develop/Dispixel.jpg?raw=true')
 			.setColor('#c7a153')
 		);
 	},
