@@ -1,3 +1,4 @@
+![logo](https://github.com/ConorTheDev/Dispixel/blob/develop/Dispixel.jpg?raw=true "Logo")
 # Dispixel
 A lightweight, easy to use bot for Discord that fetches player stats from the Hypixel API. Powered by a custom javascript wrapper for the [Hypixel API](https://www.npmjs.com/package/hypixeljs).
 ## Usage
