@@ -24,4 +24,4 @@ module.exports = {
 			message.reply('You must only provide a username after this command.');
 		}
 	},
-}
+};

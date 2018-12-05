@@ -2,7 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const hypixeljs = require('hypixeljs');
 const moment = require('moment');
-const DBL = require("dblapi.js");
+const DBL = require('dblapi.js');
 const { prefix, icons } = require('./config.json');
 const { discord_token, hypixel_api_keys, discord_bots } = require('./key.json');
 
@@ -91,11 +91,11 @@ bot.on('message', message => {
 
 dbl.on('posted', () => {
 	console.log('Server count posted!');
-})
+});
 
 dbl.on('error', e => {
 	console.log(`Oops! ${e}`);
-})
+});
 
 
 bot.login(discord_token);

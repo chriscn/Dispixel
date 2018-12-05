@@ -18,7 +18,7 @@ module.exports = {
 
 		if (!args.length) {
 			helpEmbed.setTitle('Dispixel Help:');
-			helpEmbed.addField('Here\'s a list of all of the commands available:', commands.map(command => command.name).join(', '))
+			helpEmbed.addField('Here\'s a list of all of the commands available:', commands.map(command => command.name).join(', '));
 			helpEmbed.addField(`You can use ${prefix}help [command] to get information about a specific command.`, `e.g. ${prefix}help ping`);
 
 			return message.author.send(helpEmbed)
@@ -39,7 +39,7 @@ module.exports = {
 			return message.reply('that\'s not a valid command!');
 		}
 
-		helpEmbed.setTitle(`${captalise(command.name)} Help`)
+		helpEmbed.setTitle(`${captalise(command.name)} Help`);
 
 		if (command.aliases) helpEmbed.addField('**Aliases:**', `${command.aliases.join(', ')}`);
 		if (command.description) helpEmbed.addField('**Description:**', `${command.description}`);
