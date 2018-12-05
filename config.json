@@ -1,5 +1,6 @@
 {
   "prefix": "-",
+  "logoUrl": "https://github.com/chriscn/Dispixel/blob/develop/Dispixel.jpg?raw=true",
   "icons": {
     "default": "https://i.imgur.com/xM72hxF.png",
     "warning": "https://i.imgur.com/OO6LVBU.png"
