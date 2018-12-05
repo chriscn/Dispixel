@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const util = require('../lib/dispixelutil.js');
 const hypixeljs = require('hypixeljs');
 const { hypixel_api_keys } = require('../key.json');
 
@@ -10,7 +10,7 @@ module.exports = {
 	execute(message) {
 		hypixeljs.playersOnline().then(playersOnline => {
 			hypixeljs.watchdog().then(watchdog => {
-				message.channel.send(new Discord.RichEmbed()
+				message.channel.send(util.richEmbed()
 					.setTitle('Hypixel Information')
 					.addField('Players Online', `There are ${playersOnline} players online`)
 					.addField('Watchdog Stats', `Today Watchdog has banned ${watchdog.watchdog_rollingDaily} players, out of ${watchdog.watchdog_total} players total.`)
