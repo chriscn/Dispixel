@@ -1,5 +1,3 @@
-import app from app.js
-
 const Discord = require('discord.js');
 const hypixeljs = require('hypixeljs');
 const {
