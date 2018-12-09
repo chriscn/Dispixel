@@ -20,19 +20,23 @@ module.exports = {
 	usage: '[playername]',
 	execute(message, args) {
 		if (args.length === 1) {
-			mojangjs.getUUID(args[0]).then(res => {
-				if (res === undefined) {
-					message.reply('that player could not be found.');
-				} else {
-					message.channel.send(new Discord.RichEmbed()
-						.setTitle(`**${args[0]}**'s UUID`)
-						.setColor('#44bd32')
-						.setThumbnail('https://visage.surgeplay.com/face/' + res)
-						.addField('Trimmed UUID:', res)
-						.addField('UUID:', convertTrimmedUUIDToRegular(res))
-					);
-				}
-			}).catch(err => console.error(err));
+			mojangjs
+				.getUUID(args[0])
+				.then(res => {
+					if (res === undefined) {
+						message.reply('that player could not be found.');
+					} else {
+						message.channel.send(
+							new Discord.RichEmbed()
+								.setTitle(`**${args[0]}**'s UUID`)
+								.setColor('#44bd32')
+								.setThumbnail('https://visage.surgeplay.com/face/' + res)
+								.addField('Trimmed UUID:', res)
+								.addField('UUID:', convertTrimmedUUIDToRegular(res))
+						);
+					}
+				})
+				.catch(err => console.error(err));
 		} else {
 			message.reply('You must only provide a username after the command.');
 		}

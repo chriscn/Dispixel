@@ -8,7 +8,7 @@
     "url": "git+https://github.com/chriscn/Dispixel.git"
   },
   "scripts": {
-    "test": "./node_modules/.bin/eslint --fix --ignore-path .gitignore ."
+    "lint": "eslint . --fix"
   },
   "engines": {
     "node": ">=8.0.0"
