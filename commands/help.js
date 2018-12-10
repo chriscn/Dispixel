@@ -1,9 +1,6 @@
 const Discord = require('discord.js');
 const { prefix } = require('../config.json');
-
-function captalize(str) {
-	return str.charAt(0).toUpperCase() + str.substr(1);
-}
+const { capitalize } = require('../lib/dispixelutil');
 
 module.exports = {
 	name: 'help',
@@ -53,7 +50,7 @@ module.exports = {
 			return message.reply('that\'s not a valid command!');
 		}
 
-		helpEmbed.setTitle(`${captalize(command.name)} Help`);
+		helpEmbed.setTitle(`${capitalize(command.name)} Help`);
 
 		if (command.aliases) {helpEmbed.addField('**Aliases:**', `${command.aliases.join(', ')}`);}
 		if (command.description) {helpEmbed.addField('**Description:**', `${command.description}`);}

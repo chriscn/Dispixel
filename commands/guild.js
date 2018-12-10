@@ -1,7 +1,12 @@
 const Discord = require('discord.js');
 const hypixeljs = require('hypixeljs');
 const mojangjs = require('mojangjs');
-const dispixelutil = require('../lib/dispixelutil');
+const {
+	numberWithCommas,
+	addSuffix,
+	formatAPITime,
+	isValidGuildId,
+} = require('../lib/dispixelutil');
 
 function sendGuildEmbed(message, guild) {
 	guild.master = guild.members.find(
@@ -31,20 +36,14 @@ function sendGuildEmbed(message, guild) {
 					)
 					.addField('Guild Master:', guild.master.nickname, true)
 					.addField('Members:', guild.members.length, true)
-					.addField(
-						'Experience:',
-						dispixelutil.numberWithCommas(guild.exp),
-						true
-					)
+					.addField('Experience:', numberWithCommas(guild.exp), true)
 					.addField(
 						'Legacy Rank:',
 						guild.legacyRanking !== undefined
-							? dispixelutil.addSuffix(
-								dispixelutil.numberWithCommas(guild.legacyRanking)
-							)
+							? addSuffix(numberWithCommas(guild.legacyRanking))
 							: 'Unknown'
 					)
-					.addField('Created At:', dispixelutil.formatAPITime(guild.created))
+					.addField('Created At:', formatAPITime(guild.created))
 			);
 		})
 		.catch(console.error);
@@ -57,7 +56,7 @@ module.exports = {
 	args: true,
 	execute(message, args) {
 		const promise =
-			dispixelutil.isValidGuildId(args[0]) && args.length === 1
+			isValidGuildId(args[0]) && args.length === 1
 				? hypixeljs.getGuild.byId(args[0])
 				: hypixeljs.getGuild.byName(args.join(' '));
 

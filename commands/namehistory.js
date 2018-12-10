@@ -1,7 +1,7 @@
 const mojangjs = require('mojangjs');
 const Discord = require('discord.js');
 const moment = require('moment');
-const dispixelutil = require('../lib/dispixelutil');
+const { isValidNickname } = require('../lib/dispixelutil');
 
 function joinNames(playerNameHistory) {
 	let allNames = '';
@@ -21,7 +21,7 @@ module.exports = {
 	args: true,
 	usage: '[username]',
 	execute(message, args) {
-		if (args.length !== 1 || !dispixelutil.isValidNickname(args[0])) {
+		if (args.length !== 1 || !isValidNickname(args[0])) {
 			return message.reply(
 				'You must only provide a username after the command.'
 			);
