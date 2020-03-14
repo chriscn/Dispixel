@@ -32,7 +32,6 @@ module.exports = {
 						.addField(`${nickname}'s UUID`, uuid)
 						.setImage(`https://visage.surgeplay.com/full/${uuid.toString()}`)
 				);
-			})
-			.catch(console.error);
+			}).catch(console.error);
 	},
 };

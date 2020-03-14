@@ -31,7 +31,6 @@ module.exports = {
 						.addField('Trimmed UUID:', trimmedUuid)
 						.addField('UUID:', formatTrimmedUuid(trimmedUuid))
 				);
-			})
-			.catch(console.error);
+			}).catch(console.error);
 	},
 };
