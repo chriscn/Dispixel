@@ -1,8 +1,4 @@
-![logo](https://github.com/ConorTheDev/Dispixel/blob/develop/Dispixel.jpg?raw=true "Logo")
 # Dispixel
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/chriscn/Dispixel.svg)](https://greenkeeper.io/)
-
 A lightweight, easy to use bot for Discord that fetches player stats from the Hypixel API. Powered by a custom javascript wrapper for the [Hypixel API](https://www.npmjs.com/package/hypixeljs).
 ## Usage
 To run this you can either host it yourself which is absolutely fine or invite Dispixel to your [server](https://thorindev.co.uk/dispixel.html). If you would like to run your own version follow these steps.
