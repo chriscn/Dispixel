@@ -8,7 +8,9 @@
     "url": "git+https://github.com/chriscn/Dispixel.git"
   },
   "scripts": {
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -25,9 +27,11 @@
     "hypixeljs": "^1.4.0",
     "mojangjs": "^2.0.3",
     "moment": "^2.24.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0"
-  }
+  },
+  "snyk": true
 }
