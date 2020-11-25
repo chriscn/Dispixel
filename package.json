@@ -28,7 +28,7 @@
     "mojangjs": "^2.0.3",
     "moment": "^2.24.0",
     "request": "^2.88.2",
-    "snyk": "^1.316.1"
+    "snyk": "^1.425.4"
   },
   "devDependencies": {
     "eslint": "^5.16.0"
