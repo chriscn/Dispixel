@@ -1,5 +1,6 @@
 import { TextChannel } from "discord.js";
 import fs from "fs";
+import { Client } from "hypixel.ts";
 import path from "path";
 import client from "../index";
 import ICommand from "../model/command/command";
@@ -7,8 +8,10 @@ import ECommandResult from "../model/command/command-result";
 
 const commandRegistry = new Map<string, ICommand>();
 
+const hpToken = process.env.HP_TOKEN || "";
 const regex = /[\\""](.+?)[\\""]|([^ ]+)/ig;
 const prefix = "?";
+const hpClient = new Client(hpToken);
 
 gatherAllFiles(path.join(__dirname, "..", "commands"), []).forEach((x) => {
     if (x.endsWith(".map")) { return; }
@@ -53,6 +56,7 @@ client.on("message", async (message) => {
 
     // tslint:disable-next-line:prefer-const
     let [resultErr, result] = await hP(command.execute(
+        hpClient,
         message.member,
         textChannel,
         matches.slice(1, matches.length)
