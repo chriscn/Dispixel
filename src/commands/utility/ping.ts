@@ -10,7 +10,7 @@ export default class Ping implements ICommand {
     public syntax = "ping"
     public category = ECommandCategory.PLAYER
     public async execute(author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
-        await channel.sendMessage(`Pong! ${new Date().getTime() - channel.lastMessage.createdTimestamp}ms`)
+        await channel.send(`Pong! ${new Date().getTime() - channel.lastMessage.createdTimestamp}ms`)
         
         return ECommandResult.SUCCESS;
     }
