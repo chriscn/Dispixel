@@ -11,7 +11,7 @@ export default class Player implements ICommand {
     public description = "Get information about a player"
     public category = ECommandCategory.PLAYER;
 
-    public async execute(hpclient: Client, author: GuildMember, channel: TextChannel, args: string[]): Promise<ECommandResult> {
+    public async execute(author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
         const player = await hpclient.players.fetch(args[0]);
 
         channel.send(new RichEmbed()
