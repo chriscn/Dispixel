@@ -16,7 +16,7 @@ export default class Player implements ICommand {
 
         channel.send(new RichEmbed()
             .setTitle(
-                `${player.displayname} **(Currently online)`
+                `${player.displayname} **(Currently online)**`
             )
             .setThumbnail('https://visage.surgeplay.com/face/' + player.uuid)
             .addField('Rank:', player.packageRank || "", true)
