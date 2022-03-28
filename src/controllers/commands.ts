@@ -81,14 +81,17 @@ client.on("message", async (message) => {
 
 function registerCommand(command: ICommand) {
     commandRegistry.set(command.name.toLowerCase(), command);
-    console.log(`Registered the command '${command.name}'.`);
 
-    command.aliases.forEach((x) => {
-        if (!commandRegistry.has(x.toLowerCase())) {
-            commandRegistry.set(x.toLowerCase(), command);
-            console.log(`Registered the command '${command.name}' with the alias '${x}'.`);
-        }
-    });
+    if (command.aliases) {
+        command.aliases.forEach((x) => {
+            if (!commandRegistry.has(x.toLowerCase())) {
+                commandRegistry.set(x.toLowerCase(), command);
+                console.log(`Registered the command '${command.name}' with the alias '${x}'.`);
+            }
+        });
+    } else {
+        console.log(`Registered the command '${command.name}'.`);
+    }
 }
 
 function gatherAllFiles(dir: string, filelist: string[]) {
