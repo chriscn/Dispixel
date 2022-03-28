@@ -1,4 +1,4 @@
-import { TextChannel } from "discord.js";
+import { DMChannel, TextChannel } from "discord.js";
 import fs from "fs";
 import { Client } from "hypixel.ts";
 import path from "path";
@@ -20,7 +20,7 @@ gatherAllFiles(path.join(__dirname, "..", "commands"), []).forEach((x) => {
 });
 
 client.on("message", async (message) => {
-    if (!(message.channel instanceof TextChannel)) {
+    if (!(message.channel instanceof TextChannel || message.channel instanceof DMChannel)) {
         return;
     }
 
