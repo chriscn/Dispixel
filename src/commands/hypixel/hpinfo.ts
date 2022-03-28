@@ -6,6 +6,7 @@ import ECommandResult from "../../model/command/command-result";
 
 export default class HPInfo implements ICommand {
     public name = "hpinfo";
+    public description = "Returns information about the Hypixel Network"
     public category = ECommandCategory.HYPIXEL;
     
     public async execute(author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
