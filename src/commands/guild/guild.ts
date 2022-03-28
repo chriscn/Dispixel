@@ -9,7 +9,7 @@ export default class Guild implements ICommand {
     public syntax = "guild <guildname>";
     public category = ECommandCategory.GUILD;
 
-    public async execute(hpclient: Client, author: GuildMember, channel: TextChannel, args: string[]): Promise<ECommandResult> {
+    public async execute(author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
         return ECommandResult.SUCCESS;
     }
 }
