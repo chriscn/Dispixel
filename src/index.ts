@@ -5,9 +5,21 @@ const token = process.env.TOKEN;
 let app = new Client();
 export default app;
 
+import "./controllers/commands"; // register all commands
+
 function bindEvents(client: Client) {
     client.on('ready', async () => {
         console.log("Connected to Discord with " + client.user.username + "#" + client.user.discriminator);
+
+        await client.user.setPresence(
+            {
+                game:
+                {
+                    name: `hypixel.net | ?help`,
+                    type: "PLAYING"
+                }
+            }
+        )
     });
 
     client.on('error', async (error) => {
