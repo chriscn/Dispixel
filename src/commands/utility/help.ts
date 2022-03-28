@@ -1,4 +1,5 @@
 import { GuildMember, RichEmbed, TextChannel } from "discord.js";
+import { Client } from "hypixel.ts";
 import CommandRegistry from "../../controllers/commands";
 import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
@@ -11,7 +12,7 @@ export default class CommandHelp implements ICommand {
     public description = "Gets a list of commands, or gets the specific details of the specified command.";
     public category = ECommandCategory.UTILITY;
 
-    public async execute(author: GuildMember, channel: TextChannel, args: string[]): Promise<ECommandResult> {
+    public async execute(hpclient: Client, author: GuildMember, channel: TextChannel, args: string[]): Promise<ECommandResult> {
         if (args.length === 0) {
             await channel.send(this.buildListEmbed());
         } else {
