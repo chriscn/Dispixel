@@ -1,37 +1,37 @@
 {
-  "name": "Dispixel",
-  "version": "1.2.4",
-  "description": "A Discord bot for everything Hypixel!",
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chriscn/Dispixel.git"
-  },
-  "scripts": {
-    "lint": "eslint . --fix",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
-  },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "author": "Thorin",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/chriscn/Dispixel/issues"
-  },
-  "homepage": "https://github.com/chriscn/Dispixel#readme",
-  "dependencies": {
-    "dblapi.js": "^2.4.0",
-    "discord.js": "^11.6.2",
-    "hypixeljs": "^1.4.0",
-    "mojangjs": "^2.0.3",
-    "moment": "^2.24.0",
-    "request": "^2.88.2",
-    "snyk": "^1.316.1"
-  },
-  "devDependencies": {
-    "eslint": "^5.16.0"
-  },
-  "snyk": true
+    "name": "dispixel",
+    "version": "0.0.1",
+    "description": "Dispixel Discord Bot",
+    "main": "src/index.ts",
+    "author": "Thorin#0544",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node build/index",
+        "start:build": "npm run build && node build/index",
+        "build": "tsc -p .",
+        "build:live": "nodemon --watch src/**/*.ts --exec ts-node src/index.ts",
+        "lint": "tslint --fix src/**/*.ts",
+        "lint:nofix": "tslint src/**/*.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chriscn/Dispixel.git"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/chriscn/Dispixel/issues"
+    },
+    "homepage": "https://github.com/chriscn/Dispixel#readme",
+    "dependencies": {
+        "discord.js": "^11.6.4",
+        "moment": "^2.24.0",
+        "moment-timezone": "^0.5.25"
+    },
+    "devDependencies": {
+        "@types/node": "^11.13.6",
+        "nodemon": "^1.18.11",
+        "ts-node": "^8.1.0",
+        "tslint": "^5.16.0",
+        "typescript": "^3.4.4"
+    }
 }
