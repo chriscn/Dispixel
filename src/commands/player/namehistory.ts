@@ -4,7 +4,7 @@ import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
 import ECommandResult from "../../model/command/command-result";
 
-export default class UUID implements ICommand {
+export default class NameHistory implements ICommand {
     public name = "namehistory"
     public description = "Get a player's username history"
     public syntax = "namehistory <username>"
