@@ -53,8 +53,13 @@ export default class CommandHelp implements ICommand {
             let description = "";
 
             commands.forEach((x) => {
-                description = `${description}${x.name}: ${x.description}\n`;
+                    if (x.description) {
+                        description = `${description}${x.name}: ${x.description}\n`;
+                    } else {
+                        description = `${description}${x.name}\n`
+                    }
             });
+        
 
             embed.addField(`${key}:`, description);
         });
