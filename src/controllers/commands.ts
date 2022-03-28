@@ -70,7 +70,8 @@ client.on("message", async (message) => {
         case ECommandResult.INVALID_SYNTAX:
             textChannel.send(
                 `The syntax you supplied for the command was incorrect!\n` +
-                `Please do ${prefix + "help " + command.name} for the proper usage of this command.`
+                `The correct syntax is ${prefix + (command.syntax ?? command.name)}\n` +
+                `Please do ${prefix + "help " + command.name} for the help about this command.`
             );
             break;
         case ECommandResult.INTERNAL_ERROR:
