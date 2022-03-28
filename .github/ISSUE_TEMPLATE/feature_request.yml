@@ -1,5 +1,5 @@
 name: Feature request
-description: Request a new feature (only features which have been introduced in the API and fully documented are added.)
+description: Request a new feature
 labels: [feature request]
 body:
   - type: markdown
