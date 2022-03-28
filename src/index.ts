@@ -1,6 +1,6 @@
 import { Client } from "discord.js";
 
-const token = process.env.TOKEN;
+const token = process.env.DISCORD_TOKEN;
 
 let app = new Client();
 export default app;
