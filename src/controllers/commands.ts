@@ -56,10 +56,10 @@ client.on("message", async (message) => {
 
     // tslint:disable-next-line:prefer-const
     let [resultErr, result] = await hP(command.execute(
-        hpClient,
         message.member,
         textChannel,
-        matches.slice(1, matches.length)
+        matches.slice(1, matches.length),
+        hpClient
     ));
     if (resultErr) { result = ECommandResult.INTERNAL_ERROR; }
 
