@@ -49,7 +49,7 @@ client.on("message", async (message) => {
         return;
     }
 
-    const textChannel = message.channel as TextChannel;
+    const textChannel = message.channel;
 
     // tslint:disable-next-line:prefer-const
     let [resultErr, result] = await hP(command.execute(
