@@ -77,7 +77,7 @@ export default class CommandHelp implements ICommand {
             embed.addField("Syntax:", command.syntax);
         }
 
-        if (command.aliases.length !== 0) {
+        if (command.aliases) {
             let aliasText = "";
 
             command.aliases.forEach((x) => aliasText = `${aliasText}- ${x}\n`);
