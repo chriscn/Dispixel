@@ -8,7 +8,7 @@ import ECommandResult from "../model/command/command-result";
 
 const commandRegistry = new Map<string, ICommand>();
 
-const hpToken = process.env.HYPIXEL_API_KEY || "";
+const hpToken = process.env.HYPIXEL_API_KEY ?? "";
 const regex = /[\\""](.+?)[\\""]|([^ ]+)/ig;
 const prefix = "?";
 const hpClient = new Client(hpToken);
