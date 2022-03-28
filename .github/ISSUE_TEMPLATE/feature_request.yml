@@ -2,12 +2,6 @@ name: Feature request
 description: Request a new feature
 labels: [feature request]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        We can only implement features that Hypixel publishes, documents and merges into the Hypixel API documentation.
-        We do not implement unreleased features.
-        Use Discord for questions: https://discord.gg/DDTmaeYUMF
   - type: textarea
     id: description
     attributes:
