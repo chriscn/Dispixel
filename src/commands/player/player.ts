@@ -12,6 +12,10 @@ export default class Player implements ICommand {
     public category = ECommandCategory.PLAYER;
 
     public async execute(author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
+        if (args.length > 1) {
+            return ECommandResult.INVALID_SYNTAX;
+        }
+
         const player = await hpclient.players.fetch(args[0]);
 
         channel.send(new RichEmbed()
@@ -19,11 +23,11 @@ export default class Player implements ICommand {
                 `${player.displayname} (Currently ${(player.lastLogin > player.lastLogout) ? 'Online' : 'Offline'})`
             )
             .setThumbnail('https://visage.surgeplay.com/face/' + player.uuid)
-            .addField('Rank', player.packageRank || "", true)
-            .addField('Level', networkLevel(player.networkExp || 0), true)
-            .addField('Karma', player.karma || 0, true)
-            .addField('Achievement Points', player.achievementPoints || 0, true)
-            .addField('Joined', new Date(player.firstLogin).toISOString() || "Hasn't joined", true)
+            .addField('Rank', player.packageRank ?? "", true)
+            .addField('Level', networkLevel(player.networkExp ?? 0), true)
+            .addField('Karma', player.karma ?? 0, true)
+            .addField('Achievement Points', player.achievementPoints ?? 0, true)
+            .addField('Joined', new Date(player.firstLogin).toUTCString() ?? "Hasn't joined", true)
         );
 
         return ECommandResult.SUCCESS;
