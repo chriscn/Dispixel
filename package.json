@@ -6,7 +6,7 @@
     "author": "Thorin#0544",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node build/index",
+        "start": "node build/index.js",
         "start:build": "npm run build && node build/index",
         "build": "tsc -p .",
         "build:live": "nodemon --watch src --exec ts-node src/index.ts",
