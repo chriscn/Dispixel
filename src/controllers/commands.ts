@@ -61,7 +61,7 @@ client.on("message", async (message) => {
         matches.slice(1, matches.length),
         hpClient
     ));
-    if (resultErr) { result = ECommandResult.INTERNAL_ERROR; }
+    if (resultErr) { result = ECommandResult.INTERNAL_ERROR; console.error(resultErr) }
 
     switch (result) {
         case ECommandResult.NOT_ENOUGH_PERMISSION:
