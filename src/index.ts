@@ -15,7 +15,7 @@ function bindEvents(client: Client) {
             {
                 game:
                 {
-                    name: `hypixel.net | ?help`,
+                    name: `hypixel.net | ${process.env.DISCORD_PREFIX ?? "d?"}help`,
                     type: "PLAYING"
                 }
             }
@@ -39,6 +39,7 @@ function bindEvents(client: Client) {
         );
         restart();
     });
+    
     function restart() {
         client.removeAllListeners();
         client.destroy();
