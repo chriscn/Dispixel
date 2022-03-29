@@ -10,7 +10,7 @@ const commandRegistry = new Map<string, ICommand>();
 
 const hpToken = process.env.HYPIXEL_API_KEY ?? "";
 const regex = /[\\""](.+?)[\\""]|([^ ]+)/ig;
-const prefix = "?";
+const prefix = process.env.DISCORD_PREFIX ?? "d?";
 const hpClient = new Client(hpToken);
 
 gatherAllFiles(path.join(__dirname, "..", "commands"), []).forEach((x) => {
