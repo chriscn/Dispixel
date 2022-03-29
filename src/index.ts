@@ -15,7 +15,7 @@ function bindEvents(client: Client) {
             {
                 game:
                 {
-                    name: `hypixel.net | ${process.env.DISCORD_PREFIX ?? "d?"}help`,
+                    name: `Dispixel | ${process.env.DISCORD_PREFIX ?? "d?"}help`,
                     type: "PLAYING"
                 }
             }
