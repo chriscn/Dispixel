@@ -55,7 +55,7 @@ client.on("message", async (message) => {
     const textChannel = message.channel;
 
     // tslint:disable-next-line:prefer-const
-    let [resultErr, result] = await hP(command.execute(
+    let [resultErr, result] = await handlePromise(command.execute(
         message.member,
         textChannel,
         matches.slice(1, matches.length),
@@ -110,7 +110,7 @@ function gatherAllFiles(dir: string, filelist: string[]) {
     return filelist;
 }
 
-function hP(promise: any) {
+function handlePromise(promise: any) {
     return promise
         .then((res: any) => [null, res])
         .catch((err: any) => [err]);
