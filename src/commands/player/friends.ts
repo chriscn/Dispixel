@@ -1,4 +1,4 @@
-import { GuildMember, TextChannel, User } from "discord.js";
+import { GuildMember, Message, TextChannel, User } from "discord.js";
 import { Client } from "hypixel.ts";
 import axios from "axios";
 import ICommand from "../../model/command/command";
@@ -10,7 +10,7 @@ export default class FriendsCommand implements ICommand {
     public syntax = "friends <playername>";
     public aliases = ['f']
     public category = ECommandCategory.PLAYER;
-    public async execute(author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
+    public async execute(message: Message, author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
         return ECommandResult.SUCCESS;
     }
 }

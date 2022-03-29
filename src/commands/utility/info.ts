@@ -1,4 +1,4 @@
-import { GuildMember, TextChannel } from "discord.js";
+import { GuildMember, Message, TextChannel } from "discord.js";
 import { Client } from "hypixel.ts";
 import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
@@ -8,7 +8,7 @@ export default class InfoCommand implements ICommand {
     public name = "info";
     public description: string = "Gather information about the plugin";
     public category = ECommandCategory.UTILITY;
-    public async execute(author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
+    public async execute(message: Message, author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
         return ECommandResult.SUCCESS;
     }
 }
