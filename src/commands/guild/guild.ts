@@ -4,7 +4,7 @@ import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
 import ECommandResult from "../../model/command/command-result";
 
-export default class Guild implements ICommand {
+export default class GuildCommand implements ICommand {
     public name: string = "guild";
     public syntax = "guild <guildname>";
     public category = ECommandCategory.GUILD;

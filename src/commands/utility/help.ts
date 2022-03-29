@@ -5,7 +5,7 @@ import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
 import ECommandResult from "../../model/command/command-result";
 
-export default class CommandHelp implements ICommand {
+export default class HelpCommand implements ICommand {
     public name = "help";
     public aliases = [];
     public syntax = "help <command>";

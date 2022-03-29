@@ -4,7 +4,7 @@ import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
 import ECommandResult from "../../model/command/command-result";
 
-export default class UUID implements ICommand {
+export default class UUIDCommand implements ICommand {
     public name = "uuid"
     public description = "Get a player's unique identifier"
     public syntax = "uuid <username>"

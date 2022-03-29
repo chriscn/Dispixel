@@ -5,7 +5,7 @@ import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
 import ECommandResult from "../../model/command/command-result";
 
-export default class Friends implements ICommand {
+export default class FriendsCommand implements ICommand {
     public name = "friends";
     public syntax = "friends <playername>";
     public aliases = ['f']

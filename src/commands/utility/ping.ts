@@ -4,7 +4,7 @@ import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
 import ECommandResult from "../../model/command/command-result";
 
-export default class Ping implements ICommand {
+export default class PingCommand implements ICommand {
     public name = "ping"
     public description = "Pong!"
     public syntax = "ping"
