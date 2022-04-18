@@ -10,6 +10,18 @@ export default class UUIDCommand implements ICommand {
     public syntax = "uuid <username>"
     public category = ECommandCategory.PLAYER
     public async execute(author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
+        if (args.length != 1) {
+            return ECommandResult.INVALID_SYNTAX;
+        }
+
+        try {
+            const uuid = await hpclient.util.getUUID(args[0]);
+
+            await channel.send(`${args[0]} is ${uuid}`);
+        } catch {
+            await channel.send(`${args[0]} was not found.`)
+        }
+
         return ECommandResult.SUCCESS;
     }
 }
