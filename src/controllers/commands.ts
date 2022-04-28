@@ -56,8 +56,9 @@ client.on("message", async (message) => {
 
     let [error, result] = await handlePromise(command.execute(message, matches.slice(1, matches.length), hpClient));
 
-    if (error) { 
-        result = ECommandResult.INTERNAL_ERROR; console.error(error); 
+    if (error) {
+        result = ECommandResult.INTERNAL_ERROR;
+        console.error(error);
     }
 
     switch (result) {
@@ -80,13 +81,13 @@ client.on("message", async (message) => {
 function registerCommand(command: ICommand) {
     commandRegistry.set(command.name.toLowerCase(), command);
 
-    if (command.aliases && command.aliases.length != 0) {
+    if (command.aliases && command.aliases.length !== 0) {
         command.aliases.forEach((x) => {
             if (!commandRegistry.has(x.toLowerCase())) {
                 commandRegistry.set(x.toLowerCase(), command);
             }
         });
-        console.log(`Registered the command '${command.name}' with the aliases [${command.aliases.join(', ')}].`);
+        console.log(`Registered the command '${command.name}' with the aliases [${command.aliases.join(", ")}].`);
     } else {
         console.log(`Registered the command '${command.name}'.`);
     }
