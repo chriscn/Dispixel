@@ -1,4 +1,4 @@
-import { DMChannel, GuildMember, TextChannel } from "discord.js";
+import { GuildMember, TextChannel, DMChannel, Message } from "discord.js";
 import { Client } from "hypixel.ts";
 import ECommandCategory from "./command-category";
 import ECommandResult from "./command-result";
@@ -9,5 +9,5 @@ export default interface ICommand {
     syntax?: string;
     description?: string;
     category: ECommandCategory;
-    execute(author: GuildMember, channel: TextChannel | DMChannel, args: string[], hpclient: Client): Promise<ECommandResult>;
+    execute(message: Message, args: string[], hpclient: Client): Promise<ECommandResult>;
 }

@@ -1,4 +1,4 @@
-import { GuildMember, TextChannel } from "discord.js";
+import { GuildMember, Message, TextChannel } from "discord.js";
 import { Client } from "hypixel.ts";
 import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
@@ -9,8 +9,8 @@ export default class PingCommand implements ICommand {
     public description = "Pong!"
     public syntax = "ping"
     public category = ECommandCategory.PLAYER
-    public async execute(author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
-        await channel.send(`Pong!`)
+    public async execute(message: Message, args: string[], hpclient: Client): Promise<ECommandResult> {
+        await message.channel.send(`Pong!`)
         
         return ECommandResult.SUCCESS;
     }

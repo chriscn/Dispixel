@@ -1,4 +1,4 @@
-import { GuildMember, RichEmbed, TextChannel } from "discord.js";
+import { GuildMember, Message, RichEmbed, TextChannel } from "discord.js";
 import { Client, Player } from "hypixel.ts";
 import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
@@ -11,14 +11,14 @@ export default class PlayerCommand implements ICommand {
     public description = "Get information about a player"
     public category = ECommandCategory.PLAYER;
 
-    public async execute(author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
+    public async execute(message: Message, args: string[], hpclient: Client): Promise<ECommandResult> {
         if (args.length != 1) {
             return ECommandResult.INVALID_SYNTAX;
         }
 
         const player = await hpclient.players.fetch(args[0]);
 
-        channel.send(new RichEmbed()
+        message.channel.send(new RichEmbed()
             .setTitle(
                 `${player.displayname ?? args[0]} (Currently ${(player.lastLogin > player.lastLogout) ? 'Online' : 'Offline'})`
             )
