@@ -54,13 +54,11 @@ client.on("message", async (message) => {
 
     const textChannel = message.channel;
 
-    // tslint:disable-next-line:prefer-const
-    let [resultErr, result] = await handlePromise(command.execute(
-        message,
-        matches.slice(1, matches.length),
-        hpClient
-    ));
-    if (resultErr) { result = ECommandResult.INTERNAL_ERROR; console.error(resultErr); }
+    let [error, result] = await handlePromise(command.execute(message, matches.slice(1, matches.length), hpClient));
+
+    if (error) { 
+        result = ECommandResult.INTERNAL_ERROR; console.error(error); 
+    }
 
     switch (result) {
         case ECommandResult.NOT_ENOUGH_PERMISSION:
@@ -82,31 +80,31 @@ client.on("message", async (message) => {
 function registerCommand(command: ICommand) {
     commandRegistry.set(command.name.toLowerCase(), command);
 
-    if (command.aliases) {
+    if (command.aliases && command.aliases.length != 0) {
         command.aliases.forEach((x) => {
             if (!commandRegistry.has(x.toLowerCase())) {
                 commandRegistry.set(x.toLowerCase(), command);
-                console.log(`Registered the command '${command.name}' with the alias '${x}'.`);
             }
         });
+        console.log(`Registered the command '${command.name}' with the aliases [${command.aliases.join(', ')}].`);
     } else {
         console.log(`Registered the command '${command.name}'.`);
     }
 }
 
-function gatherAllFiles(dir: string, filelist: string[]) {
+function gatherAllFiles(dir: string, fileList: string[]) {
     const files = fs.readdirSync(dir);
-    filelist = filelist || [];
+    fileList = fileList || [];
 
     files.forEach((file) => {
         if (fs.statSync(path.join(dir, file)).isDirectory()) {
-            filelist = gatherAllFiles(path.join(dir, file), filelist);
+            fileList = gatherAllFiles(path.join(dir, file), fileList);
         } else {
-            filelist.push(path.join(dir, file));
+            fileList.push(path.join(dir, file));
         }
     });
 
-    return filelist;
+    return fileList;
 }
 
 function handlePromise(promise: any) {
