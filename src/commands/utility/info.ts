@@ -8,7 +8,9 @@ export default class InfoCommand implements ICommand {
     public name = "info";
     public description: string = "Gather information about the plugin";
     public category = ECommandCategory.UTILITY;
-    public async execute(message: Message, author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
+    public async execute(message: Message, args: string[], hpclient: Client): Promise<ECommandResult> {
+        await message.channel.send(`Dispixel Info: ${message.author}`)
+
         return ECommandResult.SUCCESS;
     }
 }

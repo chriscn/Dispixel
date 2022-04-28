@@ -10,7 +10,7 @@ export default class NameHistoryCommand implements ICommand {
     public syntax = "namehistory <username>"
     public aliases = ['nh']
     public category = ECommandCategory.PLAYER
-    public async execute(message: Message, author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
+    public async execute(message: Message, args: string[], hpclient: Client): Promise<ECommandResult> {
         return ECommandResult.SUCCESS;
     }
 }

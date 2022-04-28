@@ -1,4 +1,4 @@
-import { GuildMember, Message, RichEmbed, TextChannel } from "discord.js";
+import { Message, RichEmbed } from "discord.js";
 import { Client } from "hypixel.ts";
 import CommandRegistry from "../../controllers/commands";
 import ICommand from "../../model/command/command";
@@ -12,14 +12,14 @@ export default class HelpCommand implements ICommand {
     public description = "Gets a list of commands, or gets the specific details of the specified command.";
     public category = ECommandCategory.UTILITY;
 
-    public async execute(message: Message, author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
+    public async execute(message: Message, args: string[], hpclient: Client): Promise<ECommandResult> {
         if (args.length === 0) {
-            await channel.send(this.buildListEmbed());
+            await message.channel.send(this.buildListEmbed());
         } else {
             const command = CommandRegistry.get(args[0].toLowerCase());
 
             if (command) {
-                await channel.send(this.buildCommandEmbed(command));
+                await message.channel.send(this.buildCommandEmbed(command));
             } else {
                 await message.reply('This command cannot be found. Please check your syntax');
                 return ECommandResult.INVALID_SYNTAX;

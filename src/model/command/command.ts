@@ -9,5 +9,5 @@ export default interface ICommand {
     syntax?: string;
     description?: string;
     category: ECommandCategory;
-    execute(message: Message, author: GuildMember, channel: TextChannel | DMChannel, args: string[], hpclient: Client): Promise<ECommandResult>;
+    execute(message: Message, args: string[], hpclient: Client): Promise<ECommandResult>;
 }

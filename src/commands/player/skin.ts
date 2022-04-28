@@ -9,7 +9,7 @@ export default class SkinCommand implements ICommand {
     public description = "Get a player's skin"
     public syntax = "skin <username>"
     public category = ECommandCategory.PLAYER
-    public async execute(message: Message, author: GuildMember, channel: TextChannel, args: string[], hpclient: Client): Promise<ECommandResult> {
+    public async execute(message: Message, args: string[], hpclient: Client): Promise<ECommandResult> {
         return ECommandResult.SUCCESS;
     }
 }
