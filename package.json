@@ -6,8 +6,8 @@
     "author": "Thorin#0544",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node build/index",
-        "start:build": "npm run build && node build/index",
+        "start": "node build/src/index.js",
+        "start:build": "npm run build && node build/src/index",
         "build": "tsc -p .",
         "build:live": "nodemon --watch src --exec ts-node src/index.ts",
         "lint": "tslint --fix src/**/*.ts",
@@ -25,7 +25,7 @@
     "dependencies": {
         "axios": "^0.26.1",
         "discord.js": "^11.6.4",
-        "hypixel.ts": "^1.1.0"
+        "hypixel.ts": "github:chriscn/hypixel.ts"
     },
     "devDependencies": {
         "@types/node": "^11.13.6",

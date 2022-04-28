@@ -1,4 +1,5 @@
 import { Client } from "discord.js";
+import { version } from "../package.json";
 
 const token = process.env.DISCORD_TOKEN;
 
@@ -15,7 +16,7 @@ function bindEvents(client: Client) {
             {
                 game:
                 {
-                    name: `hypixel.net | ${process.env.DISCORD_PREFIX ?? "d?"}help`,
+                    name: `Dispixel v${version} | ${process.env.DISCORD_PREFIX ?? "d?"}help`,
                     type: "PLAYING"
                 }
             }

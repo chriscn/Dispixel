@@ -1,5 +1,6 @@
 import { GuildMember, Message, TextChannel } from "discord.js";
 import { Client } from "hypixel.ts";
+import { version, author, description } from "../../../package.json";
 import ICommand from "../../model/command/command";
 import ECommandCategory from "../../model/command/command-category";
 import ECommandResult from "../../model/command/command-result";

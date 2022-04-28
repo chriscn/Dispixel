@@ -24,6 +24,7 @@ export default class PlayerCommand implements ICommand {
             )
             .setThumbnail('https://visage.surgeplay.com/face/' + player.uuid)
             .addField('Rank', parseRank(player), true)
+            .addField('Guild', (await hpclient.guilds.fetch(await hpclient.util.getUUID(args[0]), 'player')).name ?? 'None')
             .addField('Level', networkLevel(player.networkExp ?? 0), true)
             .addField('Karma', player.karma ?? 0, true)
             .addField('Achievement Points', player.achievementPoints ?? 0, true)

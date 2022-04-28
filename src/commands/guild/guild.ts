@@ -15,8 +15,10 @@ export default class GuildCommand implements ICommand {
         }
 
         const data = await hpclient.guilds.fetch(args[0], "name");
-        await message.reply(data.name);
+
+        await channel.send(data.name);
 
         return ECommandResult.SUCCESS;
+
     }
 }
