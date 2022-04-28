@@ -1,10 +1,13 @@
 import { DMChannel, TextChannel } from "discord.js";
+import dotenv from "dotenv";
 import fs from "fs";
 import { Client } from "hypixel.ts";
 import path from "path";
 import client from "../index";
 import ICommand from "../model/command/command";
 import ECommandResult from "../model/command/command-result";
+
+dotenv.config();
 
 const commandRegistry = new Map<string, ICommand>();
 

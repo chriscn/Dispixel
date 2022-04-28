@@ -1,6 +1,8 @@
 import { Client } from "discord.js";
 import { version } from "../package.json";
+import dotenv from "dotenv";
 
+dotenv.config();
 const token = process.env.DISCORD_TOKEN;
 
 let app = new Client();

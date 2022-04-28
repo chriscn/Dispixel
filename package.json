@@ -25,6 +25,7 @@
     "dependencies": {
         "axios": "^0.26.1",
         "discord.js": "^11.6.4",
+        "dotenv": "^16.0.0",
         "hypixel.ts": "github:chriscn/hypixel.ts"
     },
     "devDependencies": {
