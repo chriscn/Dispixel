@@ -16,20 +16,26 @@ export default class PlayerCommand implements ICommand {
             return ECommandResult.INVALID_SYNTAX;
         }
 
-        const player = await hpclient.players.fetch(args[0]);
+        try {
+            const player = await hpclient.players.fetch(args[0]);
 
-        message.channel.send(new RichEmbed()
-            .setTitle(
-                `${player.displayname ?? args[0]} (Currently ${(player.lastLogin > player.lastLogout) ? 'Online' : 'Offline'})`
-            )
-            .setThumbnail('https://visage.surgeplay.com/face/' + player.uuid)
-            .addField('Rank', parseRank(player), true)
-            .addField('Guild', (await hpclient.guilds.fetch(await hpclient.util.getUUID(args[0]), 'player')).name ?? 'None')
-            .addField('Level', networkLevel(player.networkExp ?? 0), true)
-            .addField('Karma', player.karma ?? 0, true)
-            .addField('Achievement Points', player.achievementPoints ?? 0, true)
-            .addField('Joined', new Date(player.firstLogin).toUTCString() ?? "Hasn't joined", true)
-        );
+            message.channel.send(new RichEmbed()
+                .setTitle(
+                    `${player.displayname ?? args[0]} (Currently ${(player.lastLogin > player.lastLogout) ? 'Online' : 'Offline'})`
+                )
+                .setThumbnail('https://visage.surgeplay.com/face/' + player.uuid)
+                .addField('Rank', parseRank(player), true)
+                .addField('Guild', (await hpclient.guilds.fetch(await hpclient.util.getUUID(args[0]), 'player')).name ?? 'None')
+                .addField('Level', networkLevel(player.networkExp ?? 0), true)
+                .addField('Karma', player.karma ?? 0, true)
+                .addField('Achievement Points', player.achievementPoints ?? 0, true)
+                .addField('Joined', new Date(player.firstLogin).toUTCString() ?? "Hasn't joined", true)
+            );
+        } catch {
+            message.reply(`Can't find ${args[0]} details on the API, have you joined the network?`)
+        }
+
+       
 
         return ECommandResult.SUCCESS;
     }
