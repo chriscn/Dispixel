@@ -8,7 +8,7 @@ export default class NameHistoryCommand implements ICommand {
     public name = "namehistory"
     public description = "Get a player's username history"
     public syntax = "namehistory <username>"
-    public aliases = ['nh']
+    public aliases = ['nh','nhist','namehist']
     public category = ECommandCategory.PLAYER
     public async execute(message: Message, args: string[], hpclient: Client): Promise<ECommandResult> {
         return ECommandResult.SUCCESS;
