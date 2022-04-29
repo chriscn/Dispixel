@@ -5,4 +5,4 @@ const enum ECommandResult {
     INTERNAL_ERROR
 }
 
-export default ECommandResult;
+export default ECommandResult

@@ -1,7 +1,7 @@
-import { GuildMember, TextChannel, DMChannel, Message } from "discord.js";
-import { Client } from "hypixel.ts";
-import ECommandCategory from "./command-category";
-import ECommandResult from "./command-result";
+import { GuildMember, TextChannel, DMChannel, Message } from 'discord.js'
+import { Client } from 'hypixel.ts'
+import ECommandCategory from './command-category'
+import ECommandResult from './command-result'
 
 export default interface ICommand {
     name: string;
